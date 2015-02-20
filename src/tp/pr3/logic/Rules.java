@@ -2,7 +2,8 @@ package tp.pr3.logic;
 
 public enum Rules {
 	C4 (new Connect4Rules()) ,
-	CO (new ComplicaRules()) ;
+	CO (new ComplicaRules()) ,
+	GR (new GravityRules());
 		
 	private final GameRules gameRules;
 	

@@ -8,6 +8,7 @@ import tp.pr3.logic.Connect4Move;
 import tp.pr3.logic.Connect4Rules;
 import tp.pr3.logic.Counter;
 import tp.pr3.logic.Game;
+import tp.pr3.logic.GravityMove;
 import tp.pr3.logic.Move;
 import tp.pr3.logic.ComplicaMove;
 import tp.pr3.logic.Rules;

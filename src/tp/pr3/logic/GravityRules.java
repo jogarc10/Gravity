@@ -9,16 +9,19 @@ public class GravityRules implements GameRules{
 	private Counter winner;
 
 	public GravityRules(){
+		winner = Counter.EMPTY;
+	}
+	
+	public GravityRules(int dimX, int dimY){
+		this.dimX = dimX;
+		this.dimY = dimY;
 		winner = Counter.EMPTY; 
 	}
 	
 	public Board newBoard() {//este metodo yo creo que al final se puede borrar porque en el gravity se especifica de que tamaño se quiere crear la tabla
-		return new Board(this.dimX, this.dimY);
-	}
-	
-	public Board newBoard(int dimX, int dimY) {
 		return new Board(dimX, dimY);
 	}
+	
 
 	public boolean isDraw(Counter lastMove, Board b) {
 		boolean isDraw = false, fullBoard;

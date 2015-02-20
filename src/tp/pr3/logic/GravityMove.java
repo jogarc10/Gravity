@@ -1,10 +1,13 @@
 package tp.pr3.logic;
 
-public class GravityMove extends Move{
+import tp.pr3.Resources.Resources;
 
-	public GravityMove(Counter color, int column) {
+public class GravityMove extends Move{
+	private int row;
+
+	public GravityMove(Counter color, int column, int row) {
 		super(color, column);
-		// TODO Auto-generated constructor stub
+		this.row = row;
 	}
 
 	@Override
@@ -13,10 +16,12 @@ public class GravityMove extends Move{
 		return false;
 	}
 
-	@Override
 	public void undo(Board board) {
-		// TODO Auto-generated method stub
+		int columnToUndo, rowToUndo;
 		
+		columnToUndo = column;
+		rowToUndo = row;
+		board.setPosition(columnToUndo, rowToUndo, Counter.EMPTY); 
 	}
 
 }
