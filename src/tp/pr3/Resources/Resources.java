@@ -13,6 +13,8 @@ public class Resources {
 	public static final int DIMX_CONNECT4 = 7, DIMY_CONNECT4 = 6;
 //	public static final int DIMX_COMPLICA = 2, DIMY_COMPLICA = 2;
 	public static final int DIMX_COMPLICA = 4, DIMY_COMPLICA = 7;
+	
+	public static final int DIMX_GRAVITY = 4, DIMY_GRAVITY = 7;
 
 	public static int freeRowPosition(int col, Board board) {
 		int row = -1;

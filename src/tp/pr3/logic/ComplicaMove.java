@@ -39,8 +39,7 @@ public class ComplicaMove extends Move {
 		int columnToUndo, rowToUndo;
 		
 		columnToUndo = column;
-//		rowToUndo = Resources.occupiedRowPosition(board, columnToUndo); 
-//		board.setPosition(columnToUndo, rowToUndo, Counter.EMPTY);
+
 		if (lostMove == Counter.EMPTY) {
 			rowToUndo = Resources.occupiedRowPosition(board, columnToUndo); 
 			board.setPosition(columnToUndo, rowToUndo, Counter.EMPTY);
