@@ -9,6 +9,7 @@ import tp.pr3.logic.Connect4Rules;
 import tp.pr3.logic.Counter;
 import tp.pr3.logic.Game;
 import tp.pr3.logic.GravityMove;
+import tp.pr3.logic.GravityRules;
 import tp.pr3.logic.Move;
 import tp.pr3.logic.ComplicaMove;
 import tp.pr3.logic.Rules;
@@ -27,6 +28,7 @@ public class Controller {
 		boolean exit = false;
 		boolean valid = false;
 		boolean undo;
+		boolean whiteBot, blackBot;
 		String auxStr;
 		Rules gameRules = Rules.C4;
 		Move move = null;
@@ -92,6 +94,10 @@ public class Controller {
 			case 5://co
 				gameRules = Rules.CO;
 				game.reset(new ComplicaRules());
+				break;
+			case 6: //gr
+				gameRules = Rules.GR;
+				game.reset(new GravityRules());
 				break;
 			}
 			

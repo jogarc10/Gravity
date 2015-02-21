@@ -53,19 +53,6 @@ public class Resources {
 		return row;
 	}
 	
-
-//	
-//	Para cuando cojamos del teclado.
-//	
-//	String[] words = line.split(" ");
-//	Example: play co
-//			 play c4
-//			 
-//			 make a move 
-//			 words[0] (make)
-//			 words[1] (a)
-//			 words[2] (move)
-//	
 	
 public static int menu(Game game, Scanner input) {
 		int option = - 1;
@@ -151,12 +138,27 @@ public static int menu(Game game, Scanner input) {
 					System.err.println(lowerCaseStr + ": command not understood, please try again");
 				}
 			}
+			else if (words.length == 4){
+				if (words[0].equals("PLAY"))
+				{
+					if (words[1].equals("GR"))
+					{
+						if (words[2].isInteger())//no se como mirar si es integer
+						{
+							if(words[3].()){
+								//aqui asignaria a las constantes de gravity sus nuevos valores de dimensiones
+								option = 6;
+							}
+						}
+					}
+				}
+			}
 			else
 			{
 				System.err.println(lowerCaseStr + ": command not understood, please try again");
 			}
 			
-			if ((option >= 0) && (option <= 5)) {
+			if ((option >= 0) && (option <= 6)) {
 				valid = true;
 			}
 		}
