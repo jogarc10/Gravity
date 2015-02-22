@@ -191,4 +191,15 @@ public static int menu(Game game, Scanner input) {
 		}
 	}
 	
-}
+	public static boolean FullColumnConnect(int column, Board board){
+		boolean isFull = true;
+		
+		if (board.getPosition(column, board.getHeight()-1) == Counter.EMPTY){
+			isFull = false;
+		}
+		
+		return isFull;
+	}
+	}
+	
+
