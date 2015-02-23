@@ -1,17 +1,27 @@
 package tp.pr3.control;
 
-import tp.pr3.logic.Move;
 import tp.pr3.logic.Counter;
 import tp.pr3.logic.GameRules;
+import tp.pr3.logic.Move;
 
 public interface GameTypeFactory {
-
-	public Player createHumanPlayerAtConsole(java.util.Scanner in);
 	
-	public Move createMove(int col, int row, Counter colour);
+	// Constructs a player responsible for asking the user via the console 
+	// which command he or she would like to execute.
+	public abstract Player createHumanPlayerAtConsole(java.util.Scanner in);
 	
-	public Player createRandomPlayer();
+	// Constructs a move for a particular Game
+	public abstract Move createMove(int col, int row, Counter colour);
 	
-	public GameRules createRules();
+	// Constructs a player capable of playing the current game by randomly choosing moves.
+	public abstract Player createRandomPlayer();
+	
+	// Constructs the concrete rules of the game.
+	public abstract GameRules createRules();
 	
 }
+
+
+
+
+

@@ -6,7 +6,7 @@ import tp.pr3.logic.Counter;
 import tp.pr3.logic.GameRules;
 import tp.pr3.logic.Move;
 
-public class Connect4Factory implements GameTypeFactory{
+public class Connect4Factory implements GameTypeFactory {
 
 	@Override
 	public Player createHumanPlayerAtConsole(Scanner in) {
@@ -31,5 +31,5 @@ public class Connect4Factory implements GameTypeFactory{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-}
+	 
+} 
