@@ -5,9 +5,9 @@ import tp.pr3.Resources.Resources;
 public class GravityMove extends Move{
 	private int row;
 
-	public GravityMove(Counter color, int column, int row) {
-		super(color, column);
-		this.row = row;
+	public GravityMove(int moveColumn, int moveRow, Counter moveColour) {
+		super(moveColour, moveColumn);
+		this.row = moveRow;
 	}
 
 	@Override

@@ -10,7 +10,6 @@ import java.util.Random;
 
 public class RandomConnect4Player implements Player{
 
-	@Override
 	public Move getMove(Board board, Counter counter) {
 		Random randomNum = new Random();
 		int column;

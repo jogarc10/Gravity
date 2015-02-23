@@ -14,7 +14,7 @@ public class Resources {
 //	public static final int DIMX_COMPLICA = 2, DIMY_COMPLICA = 2;
 	public static final int DIMX_COMPLICA = 4, DIMY_COMPLICA = 7;
 	
-	public static final int DIMX_GRAVITY = 4, DIMY_GRAVITY = 7;
+	public static int DIMX_GRAVITY = 4, DIMY_GRAVITY = 7;
 
 	public static int freeRowPosition(int col, Board board) {
 		int row = -1;
@@ -143,13 +143,15 @@ public static int menu(Game game, Scanner input) {
 				{
 					if (words[1].equals("GR"))
 					{
-						if (words[2].isInteger())//no se como mirar si es integer
-						{
-							if(words[3].()){
-								//aqui asignaria a las constantes de gravity sus nuevos valores de dimensiones
-								option = 6;
+						try {
+							   Integer.parseInt(words[2]);
+							   Integer.parseInt(words[3]);
+							   setGravityDimX(Integer.parseInt(words[2]));
+							   setGravityDimY(Integer.parseInt(words[3]));
+							   option = 6;
+							} catch (NumberFormatException e) {
+								System.err.println(lowerCaseStr + ": command not understood, please try again");
 							}
-						}
 					}
 				}
 			}
@@ -200,6 +202,15 @@ public static int menu(Game game, Scanner input) {
 		
 		return isFull;
 	}
+	
+	public static void setGravityDimX(int x){
+		DIMX_GRAVITY = x;
+	}
+	
+	public static void setGravityDimY(int y){
+		DIMY_GRAVITY = y;
+	}
+	
 	}
 	
 
