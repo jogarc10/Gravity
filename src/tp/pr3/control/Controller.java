@@ -24,7 +24,7 @@ public class Controller {
 	}
 
 	public void run() {
-		int option = -1, col;
+		int option = -1, col, row;
 		boolean exit = false;
 		boolean valid = false;
 		boolean undo;
@@ -40,17 +40,24 @@ public class Controller {
 			switch(option) {
 			case 0: 
 				// Make a move 
+				
 				System.out.print("Please provide the column number: ");
 				col = this.in.nextInt();
 				auxStr = this.in.nextLine();
-				// we should check which type of move we are working with 
-				//depending on which game we are playing with a enum type
 				
 				if (gameRules.equals(Rules.C4)){
 					move = new Connect4Move(col, game.getTurn());
 				}
 				else if (gameRules.equals(Rules.CO)){
 					move = new ComplicaMove(col, game.getTurn());
+				}
+				else if (gameRules.equals(Rules.GR)) {
+
+					System.out.print("Please provide the row number: ");
+					row = this.in.nextInt();
+					auxStr = this.in.nextLine();
+					
+					move = new GravityMove(col, row, game.getTurn());
 				}
 				
 				valid = game.executeMove(move);
@@ -63,7 +70,6 @@ public class Controller {
 					exit = true;
 				}
 					
-				
 				break;
 			case 1:
 				// Undo 
