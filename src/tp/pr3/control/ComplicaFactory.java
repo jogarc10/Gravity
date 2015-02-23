@@ -2,34 +2,29 @@ package tp.pr3.control;
 
 import java.util.Scanner;
 
+import tp.pr3.logic.ComplicaMove;
+import tp.pr3.logic.ComplicaRules;
 import tp.pr3.logic.Counter;
 import tp.pr3.logic.GameRules;
 import tp.pr3.logic.Move;
 
-public class ComplicaFactory implements GameTypeFactory{
+public class ComplicaFactory implements GameTypeFactory {
 
-	@Override
-	public Player createHumanPlayerAtConsole(Scanner in) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Move createMove(int col, int row, Counter colour) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Player createRandomPlayer() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public GameRules createRules() {
-		// TODO Auto-generated method stub
+		return new ComplicaRules();
+	}
+
+	public Move createMove(int col, int row, Counter colour) {
+		return new ComplicaMove(col, colour);
+	}
+
+	public Player createHumanPlayerAtConsole(Scanner in) {
+		/** What the fuck??? Cómo voy a crear un objecto de una interface?  */
 		return null;
 	}
 
+	public Player createRandomPlayer() {
+		return new RandomComplicaPlayer();
+	}
+ 
 }
