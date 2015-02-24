@@ -225,76 +225,48 @@ public static int menu(Game game, Scanner input) {
 		lowerAll = Math.min(lowerSides, lowerUpDown);
 		
 		if (lowerAll == distLeft){
-			if (lowerUpDown == distUp){
-				if(distLeft == distUp){
-					displaceCounter(board, column, row, -1, 1, counter);
-				}
-				else{
-					displaceCounter(board, column, row, 0, 1, counter);
-				}
+			if (distLeft == distUp){
+				displaceCounter(board, column, row, -1, 1, counter);
+			}
+			else if(distLeft == distBottom){
+				displaceCounter(board, column, row, -1, -1, counter);
 			}
 			else{
-				if(distLeft == distBottom){
-					displaceCounter(board, column, row, -1, -1, counter);
-				}
-				else{
-					displaceCounter(board, column, row, -1, 1, counter);
-				}
+				displaceCounter(board, column, row, -1, 0, counter);
 			}
 		}
 		else if (lowerAll == distRight){
-			if (lowerUpDown == distUp){
-				if(distRight == distUp){
-					displaceCounter(board, column, row, 1, 1, counter);
-				}
-				else{
-					displaceCounter(board, column, row, 1, 0, counter);
-				}
+			if (distRight == distUp){
+				displaceCounter(board, column, row, 1, 1, counter);
+			}
+			else if(distRight == distBottom){
+				displaceCounter(board, column, row, 1, -1, counter);
 			}
 			else{
-				if(distRight == distBottom){
-					displaceCounter(board, column, row, 1, -1, counter);
-				}
-				else{
-					displaceCounter(board, column, row, 1, 0, counter);
-				}
+				displaceCounter(board, column, row, 1, 0, counter);
 			}
 		}
 		else if (lowerAll == distUp){
-			if (lowerSides == distLeft){
-				if(distLeft == distUp){
-					displaceCounter(board, column, row, -1, 1, counter);
-				}
-				else{
-					displaceCounter(board, column, row, 0, 1, counter);
-				}
+			if (distRight == distUp){
+				displaceCounter(board, column, row, 1, 1, counter);
+			}
+			else if(distLeft == distUp){
+				displaceCounter(board, column, row, -1, 1, counter);
 			}
 			else{
-				if(distRight == distUp){
-					displaceCounter(board, column, row, 1, 1, counter);
-				}
-				else{
-					displaceCounter(board, column, row, 0, 1, counter);
-				}
+				displaceCounter(board, column, row, 0, 1, counter);
 			}
 		}
 		else if (lowerAll == distBottom){
-			if (lowerSides == distLeft){
-				if(distLeft == distBottom){
-					displaceCounter(board, column, row, -1, -1, counter);
-				}
-				else{
-					displaceCounter(board, column, row, 0, -1, counter);
-				}
+			if (distRight == distUp){
+				displaceCounter(board, column, row, 1, -1, counter);
+			}
+			else if(distLeft == distUp){
+				displaceCounter(board, column, row, -1, -1, counter);
 			}
 			else{
-				if(distRight == distBottom){
-					displaceCounter(board, column, row, 1, -1, counter);
-				}
-				else{
-					displaceCounter(board, column, row, 0, -1, counter);
-				}
-			}	
+				displaceCounter(board, column, row, 0, -1, counter);
+			}
 		}
 	}
 	
