@@ -84,6 +84,9 @@ public static int menu(Game game, Scanner input) {
 				{
 					option = 3;
 				}
+				else if (words[0].equals("HELP")){
+					option = 7;
+				}
 				else
 				{
 					System.err.println(lowerCaseStr + ": command not understood, please try again");
