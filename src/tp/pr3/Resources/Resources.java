@@ -211,6 +211,111 @@ public static int menu(Game game, Scanner input) {
 		DIMY_GRAVITY = y;
 	}
 	
+	public static void applyGravity(Board board, int column, int row, Counter counter){
+		int distRight, distLeft, distUp, distBottom;
+		distLeft = column;
+		distRight = DIMX_GRAVITY - column;
+		distUp = row;
+		distBottom = DIMY_GRAVITY - row;
+		
+		int lowerSides, lowerUpDown, lowerAll;
+		
+		lowerSides = Math.min(distRight, distLeft);
+		lowerUpDown = Math.min(distUp, distBottom);
+		lowerAll = Math.min(lowerSides, lowerUpDown);
+		
+		if (lowerAll == distLeft){
+			if (lowerUpDown == distUp){
+				if(distLeft == distUp){
+					displaceCounter(board, column, row, -1, 1, counter);
+				}
+				else{
+					displaceCounter(board, column, row, 0, 1, counter);
+				}
+			}
+			else{
+				if(distLeft == distBottom){
+					displaceCounter(board, column, row, -1, -1, counter);
+				}
+				else{
+					displaceCounter(board, column, row, -1, 1, counter);
+				}
+			}
+		}
+		else if (lowerAll == distRight){
+			if (lowerUpDown == distUp){
+				if(distRight == distUp){
+					displaceCounter(board, column, row, 1, 1, counter);
+				}
+				else{
+					displaceCounter(board, column, row, 1, 0, counter);
+				}
+			}
+			else{
+				if(distRight == distBottom){
+					displaceCounter(board, column, row, 1, -1, counter);
+				}
+				else{
+					displaceCounter(board, column, row, 1, 0, counter);
+				}
+			}
+		}
+		else if (lowerAll == distUp){
+			if (lowerSides == distLeft){
+				if(distLeft == distUp){
+					displaceCounter(board, column, row, -1, 1, counter);
+				}
+				else{
+					displaceCounter(board, column, row, 0, 1, counter);
+				}
+			}
+			else{
+				if(distRight == distUp){
+					displaceCounter(board, column, row, 1, 1, counter);
+				}
+				else{
+					displaceCounter(board, column, row, 0, 1, counter);
+				}
+			}
+		}
+		else if (lowerAll == distBottom){
+			if (lowerSides == distLeft){
+				if(distLeft == distBottom){
+					displaceCounter(board, column, row, -1, -1, counter);
+				}
+				else{
+					displaceCounter(board, column, row, 0, -1, counter);
+				}
+			}
+			else{
+				if(distRight == distBottom){
+					displaceCounter(board, column, row, 1, -1, counter);
+				}
+				else{
+					displaceCounter(board, column, row, 0, -1, counter);
+				}
+			}	
+		}
+	}
+	
+	public static void displaceCounter(Board board, int posCol, int posRow, int movCol, int movRow, Counter counter){
+		boolean ocuppy = false;
+		int actualRow, actualColumn;
+		actualRow = posRow;
+		actualColumn = posCol;
+		
+		while (!ocuppy){
+			if (board.getPosition(actualColumn + movCol, actualRow + movRow) != Counter.EMPTY){
+				ocuppy = true;
+			}
+			else{
+				actualColumn += movCol;
+				actualRow += movRow;
+			}
+		}
+		board.setPosition(actualColumn, actualRow, counter);
+	}
+	
 	}
 	
 

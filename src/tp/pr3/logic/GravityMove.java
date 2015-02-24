@@ -12,8 +12,15 @@ public class GravityMove extends Move{
 
 	@Override
 	public boolean executeMove(Board board) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean validMove = false;
+		
+		if (board.getPosition(column, row) == Counter.EMPTY){
+			validMove = true;
+			Resources.applyGravity(board, column, row, currentPlayer);
+		}
+		
+
+		return validMove;
 	}
 
 	public void undo(Board board) {
