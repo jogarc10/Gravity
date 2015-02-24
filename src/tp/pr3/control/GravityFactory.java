@@ -19,8 +19,7 @@ public class GravityFactory implements GameTypeFactory{
 	}
 
 	public Player createHumanPlayerAtConsole(Scanner in) {
-		/** What the fuck??? Cómo voy a crear un objecto de una interface?  */
-		return null;
+		return new HumanPlayer(true, in, this);
 	}
 
 	public Player createRandomPlayer() {
