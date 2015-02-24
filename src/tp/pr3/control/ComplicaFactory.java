@@ -19,7 +19,8 @@ public class ComplicaFactory implements GameTypeFactory {
 	}
 
 	public Player createHumanPlayerAtConsole(Scanner in) {
-		return new HumanPlayer(false, in, this);
+		/** What the fuck??? Cómo voy a crear un objecto de una interface?  */
+		return null;
 	}
 
 	public Player createRandomPlayer() {

@@ -17,28 +17,21 @@ import tp.pr3.logic.Rules;
 public class Controller {
 	private Game game;
 	private Scanner in;
-	private GameTypeFactory gameType;
-	private Player[] players; 
-	private Counter[] c = { Counter.WHITE, Counter.BLACK }; 
-	private int currentPlayer;
 	
 	public Controller(Game g, java.util.Scanner in) {
 		game = g;
 		this.in = in;
-		players = new Player[2];
 	}
 
-	public void initGame() {
-		game.reset(gameType.createRules());
-		players[0] = gameType.createHumanPlayerAtConsole(in);
-		players[1] = gameType.createHumanPlayerAtConsole(in);
-	}
-	
 	public void run() {
+		int option = -1, col, row;
+		boolean exit = false;
+		boolean valid = false;
+		boolean undo;
+		boolean whiteBot, blackBot;
 		String auxStr;
+		Rules gameRules = Rules.C4;
 		Move move = null;
-		int option, col, row;
-		boolean exit = false, valid, undo;
 		
 		do {
 			
@@ -46,14 +39,34 @@ public class Controller {
 			
 			switch(option) {
 			case 0: 
+				// Make a move 
 				
-				move = players[currentPlayer].getMove(game.getBoard(), c[currentPlayer]);
-				valid = move.executeMove(game.getBoard());
-		 
+				System.out.print("Please provide the column number: ");
+				col = this.in.nextInt();
+				auxStr = this.in.nextLine();
+				
+				if (gameRules.equals(Rules.C4)){
+					move = new Connect4Move(col, game.getTurn());
+				}
+				else if (gameRules.equals(Rules.CO)){
+					move = new ComplicaMove(col, game.getTurn());
+				}
+				else if (gameRules.equals(Rules.GR)) {
+
+					System.out.print("Please provide the row number: ");
+					row = this.in.nextInt();
+					auxStr = this.in.nextLine();
+					
+					move = new GravityMove(col, row, game.getTurn());
+				}
+				
+				valid = game.executeMove(move);
+				
 				if (!valid) {
 					System.out.println("Invalid move, please try again");
 				}
-				if (game.isFinished()) {
+				if (game.isFinished())
+				{
 					exit = true;
 				}
 					
@@ -63,48 +76,34 @@ public class Controller {
 				undo = false;
 				undo = game.undo();
 				
-				if (!undo) { 
+				if (!undo) { // no deberia hacer falta hace cambios en cuanto a este undo
 					System.out.println("Nothing to undo, please try again");
 				}
 
 				break;
 			case 2:
 				// Restart 
-				
-				initGame(); // restart the game
+				game.reset(gameRules.getRules());// falta por ponerle las game rules que va a ser un parametro del controller
 				System.out.println("Game restarted");
 				
 				break;
-				
 			case 3:
 				// Exit
 				exit = true;
 				break;
 				
 			case 4://c4
-				gameType = new Connect4Factory();
-				initGame();
-				
-				// gameRules = Rules.C4;
-				// game.reset(new Connect4Rules());
-				
+				gameRules = Rules.C4;
+				game.reset(new Connect4Rules());
 				break;
 				
 			case 5://co
-				gameType = new ComplicaFactory();
-				initGame();
-
-				// gameRules = Rules.CO;
-				// game.reset(new ComplicaRules());
-				
+				gameRules = Rules.CO;
+				game.reset(new ComplicaRules());
 				break;
-				
 			case 6: //gr
-				gameType = new GravityFactory();
-				initGame();
-
-				// gameRules = Rules.GR;
-				// game.reset(new GravityRules());
+				gameRules = Rules.GR;
+				game.reset(new GravityRules());
 				break;
 			}
 			
@@ -119,19 +118,21 @@ public class Controller {
 				
 				System.out.print("Game over."); 
 				if (counterWinner != Counter.EMPTY) {
-					if (counterWinner == Counter.WHITE) {
+					if (counterWinner == Counter.WHITE)
+					{
 						System.out.println("White wins"); 
 					}
-					if (counterWinner == Counter.BLACK) {
+					if (counterWinner == Counter.BLACK)
+					{
 						System.out.println("Black wins"); 
 					}
 				}
-				else {
+				else
+				{
 					System.out.println("Tie game, no winner");
 				}					
 			}  
 		} while(!exit);	
-		
 		System.out.println("Closing the game... ");
 		 
 	}	
