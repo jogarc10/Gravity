@@ -9,9 +9,7 @@ import tp.pr3.logic.Game;
 public class Resources {
 	public static final int MAX_STACK = 100;
 	public static final int TILES_TO_WIN = 4;
-	// public static final int DIMX_CONNECT4 = 2, DIMY_CONNECT4 = 2;
 	public static final int DIMX_CONNECT4 = 7, DIMY_CONNECT4 = 6;
-//	public static final int DIMX_COMPLICA = 2, DIMY_COMPLICA = 2;
 	public static final int DIMX_COMPLICA = 4, DIMY_COMPLICA = 7;
 	
 	public static int DIMX_GRAVITY = 4, DIMY_GRAVITY = 7;
@@ -42,7 +40,7 @@ public class Resources {
 		int row = height, y = 1;
 		boolean occupied = false;
 		
-		while (!occupied && y <= height){
+		while (!occupied && y <= height) {
 			if (board.getPosition(col, y) != Counter.EMPTY) 
 			{
 				occupied = true;
@@ -70,82 +68,61 @@ public static int menu(Game game, Scanner input) {
 			lowerCaseStr = optionString.toLowerCase();
 			String[] words = optionString.split(" ");
 
-			if (words.length == 1)
-			{
-				if (words[0].equals("UNDO"))
-				{
+			if (words.length == 1) {
+				if (words[0].equals("UNDO")) {
 					option = 1;
 				}
-				else if (words[0].equals("RESTART"))
-				{
+				else if (words[0].equals("RESTART")) {
 					option = 2;
 				}
-				else if (words[0].equals("EXIT"))
-				{
+				else if (words[0].equals("EXIT")) {
 					option = 3;
 				}
 				else if (words[0].equals("HELP")){
 					option = 7;
 				}
-				else
-				{
+				else {
 					System.err.println(lowerCaseStr + ": command not understood, please try again");
 				}
 			}
-			else if (words.length == 2)
-			{
-				if (words[0].equals("PLAY"))
-				{
-					if (words[1].equals("C4"))
-					{
+			else if (words.length == 2) {
+				if (words[0].equals("PLAY")) {
+					if (words[1].equals("C4")) {
 						option = 4;
 					}
-					else if (words[1].equals("CO"))
-					{
+					else if (words[1].equals("CO")) {
 						option = 5;
 					}
-					else
-					{
+					else {
 						System.err.println(lowerCaseStr + ": command not understood, please try again");
 					}
 				}
-				else
-				{
+				else {
 					System.err.println(lowerCaseStr + ": command not understood, please try again");
 				}
 			}
-			else if (words.length == 3)
-			{
-				if (words[0].equals("MAKE"))
-				{
-					if (words[1].equals("A"))
-					{
-						if (words[2].equals("MOVE"))
-						{
+			else if (words.length == 3) {
+				if (words[0].equals("MAKE")) {
+					if (words[1].equals("A")) {
+						if (words[2].equals("MOVE")) {
 							option = 0;
 						}
-						else
-						{
+						else {
 							System.err.println(lowerCaseStr + ": command not understood, please try again");
-						}
-							
+						}	
 					}
-					else
-					{
+					else {
 						System.err.println(lowerCaseStr + ": command not understood, please try again");
 					}
 					
 				}
-				else
-				{
+				else {
 					System.err.println(lowerCaseStr + ": command not understood, please try again");
 				}
 			}
 			else if (words.length == 4){
-				if (words[0].equals("PLAY"))
-				{
-					if (words[1].equals("GR"))
-					{
+				if (words[0].equals("PLAY")) {
+					if (words[1].equals("GR")) {
 						try {
 							   Integer.parseInt(words[2]);
 							   Integer.parseInt(words[3]);
@@ -158,8 +135,7 @@ public static int menu(Game game, Scanner input) {
 					}
 				}
 			}
-			else
-			{
+			else {
 				System.err.println(lowerCaseStr + ": command not understood, please try again");
 			}
 			
@@ -167,7 +143,6 @@ public static int menu(Game game, Scanner input) {
 				valid = true;
 			}
 		}
-		
 		return option;
 	}
 	
