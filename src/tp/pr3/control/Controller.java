@@ -23,9 +23,9 @@ public class Controller {
 	private int currentPlayer;
 	
 	public Controller(Game g, java.util.Scanner in) {
-		game = g;
+		this.game = g;
 		this.in = in;
-		players = new Player[2];
+		this.players = new Player[2]; // Create players array
 	}
 
 	public void initGame() {
@@ -70,41 +70,32 @@ public class Controller {
 				break;
 			case 2:
 				// Restart 
-				
 				initGame(); // restart the game
 				System.out.println("Game restarted");
-				
 				break;
 				
 			case 3:
 				// Exit
 				exit = true;
 				break;
-				
+
 			case 4://c4
+				
 				gameType = new Connect4Factory();
 				initGame();
-				
-				// gameRules = Rules.C4;
-				// game.reset(new Connect4Rules());
-				
+				 
 				break;
-				
 			case 5://co
+				
 				gameType = new ComplicaFactory();
 				initGame();
-
-				// gameRules = Rules.CO;
-				// game.reset(new ComplicaRules());
 				
 				break;
-				
 			case 6: //gr
+				
 				gameType = new GravityFactory();
 				initGame();
 
-				// gameRules = Rules.GR;
-				// game.reset(new GravityRules());
 				break;
 			case 7:
 				System.out.println("The available commands are:");
