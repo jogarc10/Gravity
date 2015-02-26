@@ -139,7 +139,7 @@ public static int menu(Game game, Scanner input) {
 				System.err.println(lowerCaseStr + ": command not understood, please try again");
 			}
 			
-			if ((option >= 0) && (option <= 6)) {
+			if ((option >= 0) && (option <= 7)) {
 				valid = true;
 			}
 		}
