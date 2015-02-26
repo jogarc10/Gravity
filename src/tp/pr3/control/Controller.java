@@ -26,12 +26,14 @@ public class Controller {
 		this.game = g;
 		this.in = in;
 		this.players = new Player[2]; // Create players array
+		currentPlayer = 0;
 	}
 
 	public void initGame() {
 		game.reset(gameType.createRules());
 		players[0] = gameType.createHumanPlayerAtConsole(in);
 		players[1] = gameType.createHumanPlayerAtConsole(in);
+		currentPlayer = 0;
 	}
 	
 	public void run() {
@@ -46,8 +48,17 @@ public class Controller {
 			
 			switch(option) {
 			case 0: 
+//				System.out.println("Current player " + currentPlayer);
+//				System.out.println(c.length);
+//				System.out.println("Counter " +  c[currentPlayer]);
+//				
 				
-				move = players[currentPlayer].getMove(game.getBoard(), c[currentPlayer]);
+				System.out.print(players[currentPlayer]);
+				System.out.print(game.getBoard().toString());
+				System.out.print(c[currentPlayer]);
+				
+				// This instructions make the BOOM EXPLODE!!!! Booooom
+				// move = players[currentPlayer].getMove(game.getBoard(), c[currentPlayer]);
 				valid = move.executeMove(game.getBoard());
 		 
 				if (!valid) {
@@ -93,7 +104,7 @@ public class Controller {
 				break;
 			case 6: //gr
 				
-				gameType = new GravityFactory();
+				gameType = new GravityFactory(); 
 				initGame();
 
 				break;
