@@ -17,19 +17,21 @@ import tp.pr3.logic.Rules;
 public class Controller {
 	private Game game;
 	private Scanner in;
-	private GameTypeFactory gameType;
 	private Player[] players; 
-	private Counter[] c = { Counter.WHITE, Counter.BLACK }; 
 	private int currentPlayer;
+	private GameTypeFactory gameType;
+	private Counter[] c = { Counter.WHITE, Counter.BLACK }; 
 	
 	public Controller(Game g, java.util.Scanner in) {
 		this.game = g;
 		this.in = in;
 		this.players = new Player[2]; // Create players array
-		currentPlayer = 0;
+		this.gameType = new Connect4Factory();
+		initGame(); // initialize the rest of atributes
 	}
 
 	public void initGame() {
+		this.gameType = gameType;
 		game.reset(gameType.createRules());
 		players[0] = gameType.createHumanPlayerAtConsole(in);
 		players[1] = gameType.createHumanPlayerAtConsole(in);
@@ -53,7 +55,7 @@ public class Controller {
 //				System.out.println("Counter " +  c[currentPlayer]);
 //				
 				
-				System.out.print(players[currentPlayer]);
+				System.out.print(players[currentPlayer].toString());
 				System.out.print(game.getBoard().toString());
 				System.out.print(c[currentPlayer]);
 				
