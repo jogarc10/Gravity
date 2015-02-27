@@ -13,8 +13,7 @@ public abstract class Move {
 	public abstract boolean executeMove(Board board);
 	
 	//getJugador() devuelve el color del jugador al que pertenece el movimiento
-	public Counter getPlayer()
-	{
+	public Counter getPlayer() {
 		return currentPlayer;
 	}
 	

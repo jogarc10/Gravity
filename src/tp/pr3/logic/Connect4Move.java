@@ -4,12 +4,15 @@ import tp.pr3.Resources.Resources;
 
 public class Connect4Move extends Move {
 	 
-	public Connect4Move(int column, Counter counter)
-	{
+	public Connect4Move(int column, Counter counter) {
 		super(counter, column); 
 	}
 
 	public boolean executeMove(Board board) {
+		
+		
+		System.out.println("Pollas!");
+		
 		
 		boolean validMove = false;
 		int firstFreeRow = 1;

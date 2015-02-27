@@ -50,19 +50,10 @@ public class Controller {
 			
 			switch(option) {
 			case 0: 
-//				System.out.println("Current player " + currentPlayer);
-//				System.out.println(c.length);
-//				System.out.println("Counter " +  c[currentPlayer]);
-//				
 				
-				System.out.print(players[currentPlayer].toString());
-				System.out.print(game.getBoard().toString());
-				System.out.print(c[currentPlayer]);
-				
-				// This instructions make the BOOM EXPLODE!!!! Booooom
-				// move = players[currentPlayer].getMove(game.getBoard(), c[currentPlayer]);
+				move = players[currentPlayer].getMove(game.getBoard(), c[currentPlayer]);
 				valid = move.executeMove(game.getBoard());
-		 
+				
 				if (!valid) {
 					System.out.println("Invalid move, please try again");
 				}
