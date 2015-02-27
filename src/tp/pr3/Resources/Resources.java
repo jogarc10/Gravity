@@ -200,50 +200,95 @@ public class Resources {
 		lowerUpDown = Math.min(distUp, distBottom);
 		lowerAll = Math.min(lowerSides, lowerUpDown);
 		
-		if (lowerAll == distLeft){
-			if (distLeft == distUp){
-				displaceCounter(board, column, row, -1, 1, counter);
-			}
-			else if(distLeft == distBottom){
-				displaceCounter(board, column, row, -1, -1, counter);
-			}
-			else{
-				displaceCounter(board, column, row, -1, 0, counter);
-			}
+		if((distLeft == distRight) && (distUp == distBottom) && (distLeft == distUp)){
+			displaceCounter(board, column, row, 0, 0, counter);
 		}
-		else if (lowerAll == distRight){
-			if (distRight == distUp){
-				displaceCounter(board, column, row, 1, 1, counter);
-			}
-			else if(distRight == distBottom){
-				displaceCounter(board, column, row, 1, -1, counter);
-			}
-			else{
-				displaceCounter(board, column, row, 1, 0, counter);
-			}
-		}
-		else if (lowerAll == distUp){
-			if (distRight == distUp){
-				displaceCounter(board, column, row, 1, 1, counter);
-			}
-			else if(distLeft == distUp){
-				displaceCounter(board, column, row, -1, 1, counter);
-			}
-			else{
-				displaceCounter(board, column, row, 0, 1, counter);
-			}
-		}
-		else if (lowerAll == distBottom){
-			if (distRight == distUp){
-				displaceCounter(board, column, row, 1, -1, counter);
-			}
-			else if(distLeft == distUp){
-				displaceCounter(board, column, row, -1, -1, counter);
-			}
-			else{
+		else if (distLeft == distRight){
+			if (distUp < distBottom){
 				displaceCounter(board, column, row, 0, -1, counter);
 			}
+			else if (distBottom < distUp){
+				displaceCounter(board, column, row, 0, +1, counter);
+			}
 		}
+		else if (distUp == distBottom){
+			if (distLeft < distRight){
+				displaceCounter(board, column, row, -1, 0, counter);
+			}
+			else if (distLeft > distRight){
+				displaceCounter(board, column, row, +1, 0, counter);
+			}
+		}
+		else if (distUp == distRight && distUp <= lowerAll){
+			displaceCounter(board, column, row, +1, -1, counter);
+		}
+		else if (distUp == distLeft && distUp <= lowerAll){
+			displaceCounter(board, column, row, -1, -1, counter);	
+		}
+		else if (distBottom == distRight && distUp <= lowerAll){
+			displaceCounter(board, column, row, +1, +1, counter);
+		}
+		else if (distBottom == distLeft && distUp <= lowerAll){
+			displaceCounter(board, column, row, -1, +1, counter);
+		}
+		else if ((distUp < distRight) && (distUp < distLeft) && (distUp < distBottom)){
+			displaceCounter(board, column, row, 0, -1, counter);
+		}
+		else if ((distRight < distUp) && (distRight < distLeft) && (distRight < distBottom)){
+			displaceCounter(board, column, row, +1, 0, counter);	
+		}
+		else if ((distLeft < distRight) && (distLeft < distUp) && (distLeft < distBottom)){
+			displaceCounter(board, column, row, -1, 0, counter);
+		}
+		else if ((distBottom < distRight) && (distBottom < distLeft) && (distBottom < distUp)){
+			displaceCounter(board, column, row, 0, +1, counter);
+		}
+		
+		
+//		if (lowerAll == distLeft){
+//			if (distLeft == distUp){
+//				displaceCounter(board, column, row, -1, 1, counter);
+//			}
+//			else if(distLeft == distBottom){
+//				displaceCounter(board, column, row, -1, -1, counter);
+//			}
+//			else{
+//				displaceCounter(board, column, row, -1, 0, counter);
+//			}
+//		}
+//		else if (lowerAll == distRight){
+//			if (distRight == distUp){
+//				displaceCounter(board, column, row, 1, 1, counter);
+//			}
+//			else if(distRight == distBottom){
+//				displaceCounter(board, column, row, 1, -1, counter);
+//			}
+//			else{
+//				displaceCounter(board, column, row, 1, 0, counter);
+//			}
+//		}
+//		else if (lowerAll == distUp){
+//			if (distRight == distUp){
+//				displaceCounter(board, column, row, 1, 1, counter);
+//			}
+//			else if(distLeft == distUp){
+//				displaceCounter(board, column, row, -1, 1, counter);
+//			}
+//			else{
+//				displaceCounter(board, column, row, 0, 1, counter);
+//			}
+//		}
+//		else if (lowerAll == distBottom){
+//			if (distRight == distUp){
+//				displaceCounter(board, column, row, 1, -1, counter);
+//			}
+//			else if(distLeft == distUp){
+//				displaceCounter(board, column, row, -1, -1, counter);
+//			}
+//			else{
+//				displaceCounter(board, column, row, 0, -1, counter);
+//			}
+//		}
 	}
 	
 	public static void displaceCounter(Board board, int posCol, int posRow, int movCol, int movRow, Counter counter){
@@ -252,16 +297,27 @@ public class Resources {
 		actualRow = posRow;
 		actualColumn = posCol;
 		
+		if ((movCol == 0) && (movRow == 0)){
+			board.setPosition(actualColumn, actualRow, counter);
+		}
+		
 		while (!ocuppy){
-			if (board.getPosition(actualColumn + movCol, actualRow + movRow) != Counter.EMPTY){
-				ocuppy = true;
+			if (actualColumn > 1 && actualColumn < DIMX_GRAVITY && actualRow > 1 && actualRow < DIMY_GRAVITY){
+				if (board.getPosition(actualColumn + movCol, actualRow + movRow) != Counter.EMPTY){
+					ocuppy = true;
+				}
+				else{
+					actualColumn += movCol;
+					actualRow += movRow;
+				}
 			}
-			else{
-				actualColumn += movCol;
-				actualRow += movRow;
+			else
+			{
+				ocuppy = true;
 			}
 		}
 		board.setPosition(actualColumn, actualRow, counter);
+		
 	}
 	
 	}
