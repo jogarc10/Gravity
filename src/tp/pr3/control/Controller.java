@@ -38,6 +38,15 @@ public class Controller {
 		currentPlayer = 0;
 	}
 	
+	public void changePlayer() {
+		if (currentPlayer == 0) {
+			currentPlayer = 1;
+		}
+		else if (currentPlayer == 1) {
+			currentPlayer = 0;
+		}
+	}
+	
 	public void run() {
 		String auxStr;
 		Move move = null;
@@ -57,10 +66,13 @@ public class Controller {
 				if (!valid) {
 					System.out.println("Invalid move, please try again");
 				}
+				else if (valid) {
+					changePlayer(); // Change Current player
+				}
 				if (game.isFinished()) {
 					exit = true;
-				}
-					
+				} 
+				
 				break;
 			case 1:
 				// Undo 
