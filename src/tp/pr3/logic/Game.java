@@ -1,5 +1,6 @@
 package tp.pr3.logic;
 
+import tp.pr3.control.GameTypeFactory;
 import tp.pr3.logic.Counter;
 import tp.pr3.Resources.Resources;
 import tp.pr3.logic.Board;
@@ -31,7 +32,7 @@ public class Game {
 			valid = mov.executeMove(board);
 			
 			if (valid) { 
-				
+ 
 				wonColor = rules.winningMove(mov, board); // Importante! Primero hay que llamar a esta, para
 														  // que actualice el color del ganador!
 				draw = rules.isDraw(mov.currentPlayer, board); // Hay empate?
@@ -62,7 +63,7 @@ public class Game {
 		turn = rules.initialPlayer();
 		winner = Counter.EMPTY;
 		finished = false;
-		stack = new Move[Resources.MAX_STACK]; // NO sé si está bien: Crear un array de 10 movimientos?
+		stack = new Move[Resources.MAX_STACK]; // NO sï¿½ si estï¿½ bien: Crear un array de 10 movimientos?
 		numUndo = 0;	
 	}
 	

@@ -51,8 +51,8 @@ public class Resources {
 		return row;
 	}
 	
-	
-public static int menu(Game game, Scanner input) {
+		
+	public static int menu(Game game, Scanner input) {
 		int option = - 1;
 		String optionString = "";
 		String lowerCaseStr;
@@ -145,14 +145,12 @@ public static int menu(Game game, Scanner input) {
 		}
 		return option;
 	}
-	
+		
 	public static void whoMoves(Game game) {
-		if (game.getTurn() == Counter.WHITE)
-		{
+		if (game.getTurn() == Counter.WHITE) {
 			System.out.println("White to move");
 		}
-		else if (game.getTurn() == Counter.BLACK)
-		{
+		else if (game.getTurn() == Counter.BLACK) {
 			System.out.println("Black to move");
 		}
 	}

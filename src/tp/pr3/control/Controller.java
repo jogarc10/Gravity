@@ -20,7 +20,7 @@ public class Controller {
 	private Player[] players; 
 	private int currentPlayer;
 	private GameTypeFactory gameType;
-	private Counter[] c = { Counter.WHITE, Counter.BLACK }; 
+	private Counter[] c = { Counter.WHITE, Counter.BLACK }; 	
 	
 	public Controller(Game g, java.util.Scanner in) {
 		this.game = g;
@@ -61,7 +61,7 @@ public class Controller {
 			case 0: 
 				
 				move = players[currentPlayer].getMove(game.getBoard(), c[currentPlayer]);
-				valid = move.executeMove(game.getBoard());
+				valid = game.executeMove(move);
 				
 				if (!valid) {
 					System.out.println("Invalid move, please try again");
@@ -152,4 +152,12 @@ public class Controller {
 		System.out.println("Closing the game... ");
 		 
 	}	
+
+	public int getCurrentPlayer() {
+		return this.currentPlayer;
+	}
+	public Counter[] getCounter() {
+		return this.c;
+	}
+	
 }
