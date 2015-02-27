@@ -9,23 +9,18 @@ public class Connect4Move extends Move {
 	}
 
 	public boolean executeMove(Board board) {
-		
-		
-		System.out.println("Pollas!");
-		
-		
 		boolean validMove = false;
 		int firstFreeRow = 1;
 
-			if ((column >= 1) && (column <= Resources.DIMX_CONNECT4)) {				
-				firstFreeRow = Resources.freeRowPosition(column, board);
+		if ((column >= 1) && (column <= Resources.DIMX_CONNECT4)) {				
+			firstFreeRow = Resources.freeRowPosition(column, board);
 
-				if (firstFreeRow > - 1) {		
-					validMove = true;
+			if (firstFreeRow > - 1) {		
+				validMove = true;
 
-					board.setPosition(column, firstFreeRow, currentPlayer); 
-				}
+				board.setPosition(column, firstFreeRow, currentPlayer); 
 			}
+		}
 		
 		return validMove;
 	}
