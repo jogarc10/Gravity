@@ -189,16 +189,14 @@ public class Resources {
 	
 	public static void applyGravity(Board board, int column, int row, Counter counter){
 		int distRight, distLeft, distUp, distBottom;
-		distLeft = column;
+		distLeft = column-1;
 		distRight = DIMX_GRAVITY - column;
-		distUp = row;
+		distUp = row-1;
 		distBottom = DIMY_GRAVITY - row;
+		int minDIM = 0;
 		
-		int lowerSides, lowerUpDown, lowerAll;
+		minDIM = Math.min(DIMX_GRAVITY, DIMY_GRAVITY);
 		
-		lowerSides = Math.min(distRight, distLeft);
-		lowerUpDown = Math.min(distUp, distBottom);
-		lowerAll = Math.min(lowerSides, lowerUpDown);
 		
 		if((distLeft == distRight) && (distUp == distBottom) && (distLeft == distUp)){
 			displaceCounter(board, column, row, 0, 0, counter);
@@ -219,16 +217,16 @@ public class Resources {
 				displaceCounter(board, column, row, +1, 0, counter);
 			}
 		}
-		else if (distUp == distRight && distUp <= lowerAll){
+		else if ((distUp == distRight) && (distUp <= minDIM/2)){
 			displaceCounter(board, column, row, +1, -1, counter);
 		}
-		else if (distUp == distLeft && distUp <= lowerAll){
+		else if ((distUp == distLeft) && (distUp <= minDIM/2)){
 			displaceCounter(board, column, row, -1, -1, counter);	
 		}
-		else if (distBottom == distRight && distUp <= lowerAll){
+		else if ((distBottom == distRight) && (distBottom <= minDIM/2)){
 			displaceCounter(board, column, row, +1, +1, counter);
 		}
-		else if (distBottom == distLeft && distUp <= lowerAll){
+		else if ((distBottom == distLeft) && (distBottom <= minDIM/2)){
 			displaceCounter(board, column, row, -1, +1, counter);
 		}
 		else if ((distUp < distRight) && (distUp < distLeft) && (distUp < distBottom)){
