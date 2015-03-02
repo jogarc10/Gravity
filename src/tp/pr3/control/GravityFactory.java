@@ -2,6 +2,7 @@ package tp.pr3.control;
 
 import java.util.Scanner;
 
+import tp.pr3.Resources.Resources;
 import tp.pr3.logic.Counter;
 import tp.pr3.logic.GameRules;
 import tp.pr3.logic.GravityMove;
@@ -10,8 +11,8 @@ import tp.pr3.logic.Move;
 
 public class GravityFactory implements GameTypeFactory{
 
-	public GameRules createRules() {
-		return new GravityRules(0, 0);
+	public GameRules createRules() {	
+		return new GravityRules(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
 	}
 
 	public Move createMove(int col, int row, Counter colour) {
