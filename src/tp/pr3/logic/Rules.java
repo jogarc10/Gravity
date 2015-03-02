@@ -1,9 +1,11 @@
 package tp.pr3.logic;
 
+import tp.pr3.Resources.Resources;
+
 public enum Rules {
 	C4 (new Connect4Rules()) ,
 	CO (new ComplicaRules()) ,
-	GR (new GravityRules());
+	GR (new GravityRules(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY));
 		
 	private final GameRules gameRules;
 	

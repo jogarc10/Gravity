@@ -7,16 +7,12 @@ public class GravityRules implements GameRules{
 	private int dimX = Resources.DIMX_GRAVITY;
 	private int dimY = Resources.DIMY_GRAVITY;
 	private Counter winner;
-
-	public GravityRules(){
-		winner = Counter.EMPTY;
-	}
 	
-//	public GravityRules(int dimX, int dimY){
-//		this.dimX = dimX;
-//		this.dimY = dimY;
-//		winner = Counter.EMPTY; 
-//	}
+	public GravityRules(int dimX, int dimY){
+		this.dimX = dimX;
+		this.dimY = dimY;
+		winner = Counter.EMPTY; 
+	}
 	
 	public Board newBoard() {//este metodo yo creo que al final se puede borrar porque en el gravity se especifica de que tamaño se quiere crear la tabla
 		return new Board(dimX, dimY);

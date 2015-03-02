@@ -22,7 +22,8 @@ public class Controller {
 	private GameTypeFactory gameType;
 	private Counter[] c = { Counter.WHITE, Counter.BLACK }; 	
 	
-	public Controller(Game g, java.util.Scanner in) {
+	public Controller(GameTypeFactory f, Game g, java.util.Scanner in) {
+		this.gameType = f;
 		this.game = g;
 		this.in = in;
 		this.players = new Player[2]; // Create players array
