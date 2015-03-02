@@ -11,7 +11,7 @@ import tp.pr3.logic.Move;
 public class GravityFactory implements GameTypeFactory{
 
 	public GameRules createRules() {
-		return new GravityRules();
+		return new GravityRules(0, 0);
 	}
 
 	public Move createMove(int col, int row, Counter colour) {
