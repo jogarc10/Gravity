@@ -10,9 +10,15 @@ import tp.pr3.logic.GravityRules;
 import tp.pr3.logic.Move;
 
 public class GravityFactory implements GameTypeFactory{
+	private int dimX, dimY;
+	
+	public GravityFactory(int x, int y) {
+		this.dimX = x;
+		this.dimY = y;
+	}
 
 	public GameRules createRules() {	
-		return new GravityRules(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
+		return new GravityRules(dimX, dimY);
 	}
 
 	public Move createMove(int col, int row, Counter colour) {

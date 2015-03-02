@@ -110,7 +110,7 @@ public class Controller {
 				break;
 			case 6: //gr
 				
-				gameType = new GravityFactory(); 
+				gameType = new GravityFactory(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY); 
 				initGame();
 
 				break;
