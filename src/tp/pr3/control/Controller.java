@@ -22,6 +22,7 @@ public class Controller {
 	private int currentPlayer;
 	private GameTypeFactory gameType;
 	private Counter[] c = { Counter.WHITE, Counter.BLACK }; 	
+	private Rules rules;
 	
 	public Controller(GameTypeFactory f, Game g, java.util.Scanner in) {
 		this.gameType = f;
@@ -76,7 +77,6 @@ public class Controller {
 				if (game.isFinished()) {
 					exit = true;
 				} 
-				
 					
 				break;
 			case 1:
@@ -128,8 +128,27 @@ public class Controller {
 				System.out.println("PLAYER [white|black] [human|random]: change the type of player.");
 				System.out.println("EXIT: exit the application.");
 				System.out.println("HELP: show this help.");
+				break;
+			case 8:
+				// WHITE HUMAN
+				players[0] = gameType.createHumanPlayerAtConsole(in);
+ 				
+				break;
+			case 9:
+				// WHITE RANDOM
+				players[0] = gameType.createRandomPlayer();
+
+				break;
+			case 10:
+				// BLACK HUMAN
+				players[1] = gameType.createHumanPlayerAtConsole(in);
+
+				break;
+			case 11:
+				// BLACK RANDOM
+				players[1] = gameType.createRandomPlayer();
 			}
-			
+			 
 			// If it's finished. Then exit the loop.
 			
 			if (game.isFinished()) 

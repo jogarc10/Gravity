@@ -116,9 +116,28 @@ public class Resources {
 					}
 					
 				}
+				else if (words[0].equals("PLAYER")) {
+					if (words[1].equals("WHITE")) {
+						if(words[2].equals("HUMAN")) {
+							option = 8; // WHITE HUMAN
+						}
+						else {
+							option = 9; // WHITE RANDOM
+						}
+					} 
+					else if (words[1].equals("BLACK")) {
+						if(words[2].equals("HUMAN")) {
+							option = 10; // BLACK HUMAN
+						}
+						else {
+							option = 11; // BLACK RANDOM
+						}
+					} 
+				}
 				else {
 					System.err.println(lowerCaseStr + ": command not understood, please try again");
 				}
+				
 			}
 			else if (words.length == 4){
 				if (words[0].equals("PLAY")) {
@@ -139,7 +158,7 @@ public class Resources {
 				System.err.println(lowerCaseStr + ": command not understood, please try again");
 			}
 			
-			if ((option >= 0) && (option <= 7)) {
+			if ((option >= 0) && (option <= 11)) {
 				valid = true;
 			}
 		}
