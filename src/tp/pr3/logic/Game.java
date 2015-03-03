@@ -1,5 +1,8 @@
 package tp.pr3.logic;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 import tp.pr3.control.GameTypeFactory;
 import tp.pr3.logic.Counter;
 import tp.pr3.Resources.Resources;
@@ -12,8 +15,7 @@ public class Game {
 	private Counter winner;
 	private Counter turn;
 	private boolean finished;
-	private Move[] stack;
-	private int numUndo = 0; // si eso cambiamos la inicializacion
+	private Deque<Move> stack = new ArrayDeque<>();
 	protected GameRules rules;
 	
 	public Game(GameRules rules) { 
@@ -66,8 +68,7 @@ public class Game {
 		turn = rules.initialPlayer();
 		winner = Counter.EMPTY;
 		finished = false;
-		stack = new Move[Resources.MAX_STACK]; // NO s� si est� bien: Crear un array de 10 movimientos?
-		numUndo = 0;	
+		stack.clear();
 	}
 	
 	//  Undo and stack 
@@ -76,10 +77,9 @@ public class Game {
 		boolean success = false;
 		Move previousMove;
 		
-		if (numUndo > 0) {
-			previousMove = stack[numUndo - 1]; // local variable con el movimiento anterior
-
-			numUndo--;			
+		if (!stack.isEmpty()){
+			previousMove = stack.getLast();
+			stack.removeLast();		
 			success = true;
 			previousMove.undo(board); 
 			turn = previousMove.getPlayer(); // Bug fixed!!! Actualizar el color del jugador!
@@ -89,10 +89,7 @@ public class Game {
 	}
 	
 	public void increaseStack(Move movement) {
-		if (numUndo < Resources.MAX_STACK ) {
-			stack[numUndo] = movement;
-			numUndo++;
-		}
+			stack.addLast(movement);
 	}
 	
 	// Getters and setters 

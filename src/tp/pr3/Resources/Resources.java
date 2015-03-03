@@ -217,7 +217,7 @@ public class Resources {
 		minDIM = Math.min(DIMX_GRAVITY, DIMY_GRAVITY);
 		
 		
-		if((distLeft == distRight) && (distUp == distBottom) && (distLeft == distUp)){
+		if((distLeft == distRight) && (distUp == distBottom)){
 			displaceCounter(board, column, row, 0, 0, counter);
 		}
 		else if (distLeft == distRight){

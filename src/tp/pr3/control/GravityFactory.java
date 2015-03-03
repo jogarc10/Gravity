@@ -12,6 +12,7 @@ import tp.pr3.logic.Move;
 public class GravityFactory implements GameTypeFactory{
 	private int dimX, dimY;
 	
+
 	public GravityFactory(int x, int y) {
 		this.dimX = x;
 		this.dimY = y;
