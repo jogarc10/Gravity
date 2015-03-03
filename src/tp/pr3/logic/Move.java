@@ -1,7 +1,7 @@
 package tp.pr3.logic;
 
 public abstract class Move {
-	protected Counter currentPlayer;
+	private Counter currentPlayer;
 	protected int column;
 	
 	public Move(Counter color, int column) {

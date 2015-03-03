@@ -23,13 +23,13 @@ public class ComplicaMove extends Move {
 
 			if (firstFreeRow > - 1) {
 				validMove = true;
-				board.setPosition(column, firstFreeRow, currentPlayer);
+				board.setPosition(column, firstFreeRow, super.getPlayer());
 			}
 			else if (firstFreeRow == - 1) {
 				validMove = true;
 				lostMove = board.getPosition(column, board.getHeight()); 
 				Resources.moveColumnDown(board, column);
-				board.setPosition(column, 1, currentPlayer);
+				board.setPosition(column, 1, super.getPlayer());
 			}
 		}
 		else {

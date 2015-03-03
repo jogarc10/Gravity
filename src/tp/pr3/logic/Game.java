@@ -25,10 +25,10 @@ public class Game {
 		Counter wonColor;
 		boolean valid = false, draw; 
 		
-		System.out.println("Current Player: " + mov.currentPlayer);
+		System.out.println("Current Player: " + mov.getPlayer());
 		System.out.println("Turn: " + turn);
 		
-		if ((mov.currentPlayer == turn) && (!finished)) { // No puede permitir hacer movimientos fuera de turno o se ha terminado el juego
+		if ((mov.getPlayer() == turn) && (!finished)) { // No puede permitir hacer movimientos fuera de turno o se ha terminado el juego
 			
 			winner = Counter.EMPTY;
 			finished = false;
@@ -38,7 +38,7 @@ public class Game {
  
 				wonColor = rules.winningMove(mov, board); // Importante! Primero hay que llamar a esta, para
 														  // que actualice el color del ganador!
-				draw = rules.isDraw(mov.currentPlayer, board); // Hay empate?
+				draw = rules.isDraw(mov.getPlayer(), board); // Hay empate?
 				
 				if (draw) {
 					finished = true; // hay empate, terminar
@@ -47,7 +47,7 @@ public class Game {
 				else {
 					if (wonColor == Counter.EMPTY) {
 						increaseStack(mov); // Si no gana nadie, guardar movimiento
-						turn = rules.nextTurn(mov.currentPlayer, board); // Cambiar el turno.
+						turn = rules.nextTurn(mov.getPlayer(), board); // Cambiar el turno.
 					}
 					else {
 						this.winner = wonColor;
@@ -85,7 +85,7 @@ public class Game {
 			numUndo--;			
 			success = true;
 			previousMove.undo(board); 
-			turn = previousMove.currentPlayer; // Bug fixed!!! Actualizar el color del jugador!
+			turn = previousMove.getPlayer(); // Bug fixed!!! Actualizar el color del jugador!
 		}
 		
 		return success;

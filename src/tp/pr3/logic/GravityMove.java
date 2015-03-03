@@ -17,7 +17,7 @@ public class GravityMove extends Move{
 		if ((column >= 1 && column <= Resources.DIMX_GRAVITY) && (row >= 1 && row <= Resources.DIMY_GRAVITY)) {
 			if (board.getPosition(column, row) == Counter.EMPTY) {
 				validMove = true;
-				Resources.applyGravity(board, column, row, currentPlayer);
+				Resources.applyGravity(board, column, row, super.getPlayer());
 			}
 			else {
 				throw new InvalidMove("Invalid move: position (" + this.column + "," + this.row + ") is already occupied.");
