@@ -212,10 +212,11 @@ public class Resources {
 		distRight = DIMX_GRAVITY - column;
 		distUp = row-1;
 		distBottom = DIMY_GRAVITY - row;
-		int minDIM = 0;
+		double minDIM = 0;
+		int minDimInt = 0;
 		
 		minDIM = Math.min(DIMX_GRAVITY, DIMY_GRAVITY);
-		
+		minDimInt = (int) Math.ceil(minDIM/2);
 		
 		if((distLeft == distRight) && (distUp == distBottom)){
 			displaceCounter(board, column, row, 0, 0, counter);
@@ -236,16 +237,16 @@ public class Resources {
 				displaceCounter(board, column, row, +1, 0, counter);
 			}
 		}
-		else if ((distUp == distRight) && (distUp < minDIM/2)){
+		else if ((distUp == distRight) && (distUp < minDimInt)){
 			displaceCounter(board, column, row, +1, -1, counter);
 		}
-		else if ((distUp == distLeft) && (distUp < minDIM/2)){
+		else if ((distUp == distLeft) && (distUp < minDimInt)){
 			displaceCounter(board, column, row, -1, -1, counter);	
 		}
-		else if ((distBottom == distRight) && (distBottom < minDIM/2)){
+		else if ((distBottom == distRight) && (distBottom < minDimInt)){
 			displaceCounter(board, column, row, +1, +1, counter);
 		}
-		else if ((distBottom == distLeft) && (distBottom < minDIM/2)){
+		else if ((distBottom == distLeft) && (distBottom < minDimInt)){
 			displaceCounter(board, column, row, -1, +1, counter);
 		}
 		else if ((distUp < distRight) && (distUp < distLeft) && (distUp < distBottom)){
