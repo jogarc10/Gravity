@@ -236,16 +236,16 @@ public class Resources {
 				displaceCounter(board, column, row, +1, 0, counter);
 			}
 		}
-		else if ((distUp == distRight) && (distUp <= minDIM/2)){
+		else if ((distUp == distRight) && (distUp < minDIM/2)){
 			displaceCounter(board, column, row, +1, -1, counter);
 		}
-		else if ((distUp == distLeft) && (distUp <= minDIM/2)){
+		else if ((distUp == distLeft) && (distUp < minDIM/2)){
 			displaceCounter(board, column, row, -1, -1, counter);	
 		}
-		else if ((distBottom == distRight) && (distBottom <= minDIM/2)){
+		else if ((distBottom == distRight) && (distBottom < minDIM/2)){
 			displaceCounter(board, column, row, +1, +1, counter);
 		}
-		else if ((distBottom == distLeft) && (distBottom <= minDIM/2)){
+		else if ((distBottom == distLeft) && (distBottom < minDIM/2)){
 			displaceCounter(board, column, row, -1, +1, counter);
 		}
 		else if ((distUp < distRight) && (distUp < distLeft) && (distUp < distBottom)){
