@@ -20,11 +20,9 @@ public class GravityRules implements GameRules{
 	
 
 	public boolean isDraw(Counter lastMove, Board b) {
-		boolean isDraw = false, fullBoard;
-		 
-		fullBoard = b.isFull(); // comprueba si el tablero esta lleno (imagino que en complica habrá que cambiarlo.)
+		boolean isDraw = false;
 		
-		if ((fullBoard) && (winner == Counter.EMPTY)) {
+		if ((b.isFull()) && (winner == Counter.EMPTY)) {
 			isDraw = true;
 		}
 		else {

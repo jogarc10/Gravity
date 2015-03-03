@@ -59,9 +59,11 @@ public class Board {
 	}
 	
 	public boolean isFull() {
-		int y = 1, x = 1;
+		int y = 1;
+		int x;
 		boolean fullB = true;
 		while((y <= height) && (fullB)) {
+			x = 1;
 			while(x <= width && (fullB)) {
 				if (getPosition(x, y) == Counter.EMPTY) {
 					fullB = false;
