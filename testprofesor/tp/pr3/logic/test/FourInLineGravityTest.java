@@ -53,10 +53,11 @@ public class FourInLineGravityTest {
 	public void testNoCuatroEnRaya() throws InvalidMove {
 		Game p = new Game(r);
 		Board t = p.getBoard();
-
+		
 		for (int y=1; y<=3; y++) {
 			for (int x=y; x <= t.getWidth()-y+1; x++) {
 				Move mov = getMovimiento(x, y, p.getTurn());
+				
 				p.executeMove(mov);
 				
 				assertEquals("Incorrectly detecting 4 in line after executing a move", Counter.EMPTY, r.winningMove(mov, t));

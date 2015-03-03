@@ -4,13 +4,15 @@ import tp.pr3.Resources.Resources;
 
 public class GravityRules implements GameRules{
 	
-	private int dimX = Resources.DIMX_GRAVITY;
-	private int dimY = Resources.DIMY_GRAVITY;
+	private int dimX;
+	private int dimY;
 	private Counter winner;
 	
 	public GravityRules(int dimX, int dimY){
 		this.dimX = dimX;
 		this.dimY = dimY;
+		Resources.DIMX_GRAVITY = dimX;
+		Resources.DIMY_GRAVITY = dimY;
 		winner = Counter.EMPTY; 
 	}
 	
