@@ -71,7 +71,7 @@ public class Controller {
 					}
 				}
 				catch(InvalidMove e) {
-					System.err.println(e);
+					System.err.println(e.getMessage());
 				} 
 				if (game.isFinished()) {
 					exit = true;

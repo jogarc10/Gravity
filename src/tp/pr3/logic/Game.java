@@ -25,6 +25,9 @@ public class Game {
 		Counter wonColor;
 		boolean valid = false, draw; 
 		
+		System.out.println("Current Player: " + mov.currentPlayer);
+		System.out.println("Turn: " + turn);
+		
 		if ((mov.currentPlayer == turn) && (!finished)) { // No puede permitir hacer movimientos fuera de turno o se ha terminado el juego
 			
 			winner = Counter.EMPTY;
@@ -52,6 +55,9 @@ public class Game {
 					} 
 				}
 			}
+		}
+		else{
+			throw new InvalidMove("Invalid turn");
 		}
 		
 		return valid;
