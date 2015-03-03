@@ -10,6 +10,7 @@ import tp.pr3.logic.Counter;
 import tp.pr3.logic.Game;
 import tp.pr3.logic.GravityMove;
 import tp.pr3.logic.GravityRules;
+import tp.pr3.logic.InvalidMove;
 import tp.pr3.logic.Move;
 import tp.pr3.logic.ComplicaMove;
 import tp.pr3.logic.Rules;
@@ -62,18 +63,21 @@ public class Controller {
 			case 0: 
 				
 				move = players[currentPlayer].getMove(game.getBoard(), c[currentPlayer]);
-				valid = game.executeMove(move);
 				
-				if (!valid) {
-					System.out.println("Invalid move, please try again");
+				try {
+					valid = game.executeMove(move);
+					if (valid) {
+						changePlayer(); // Change Current player
+					}
 				}
-				else if (valid) {
-					changePlayer(); // Change Current player
-				}
+				catch(InvalidMove e) {
+					System.err.println(e);
+				} 
 				if (game.isFinished()) {
 					exit = true;
 				} 
 				
+					
 				break;
 			case 1:
 				// Undo 

@@ -8,7 +8,7 @@ public class Connect4Move extends Move {
 		super(counter, column); 
 	}
 
-	public boolean executeMove(Board board) {
+	public boolean executeMove(Board board) throws InvalidMove {
 		boolean validMove = false;
 		int firstFreeRow = 1;
 
@@ -19,6 +19,12 @@ public class Connect4Move extends Move {
 				validMove = true;
 				board.setPosition(column, firstFreeRow, currentPlayer); 
 			}
+			else{
+				throw new InvalidMove("Invalid move: column number " + column + " is already full.");
+			}
+		}
+		else {
+			throw new InvalidMove("Invalid move: column number " + column + " is not on the board.");
 		}
 		
 		return validMove;

@@ -10,7 +10,7 @@ public abstract class Move {
 	}
 	
 	//ejecutaMovimiento(Tablero tab)
-	public abstract boolean executeMove(Board board);
+	public abstract boolean executeMove(Board board) throws InvalidMove;
 	
 	//getJugador() devuelve el color del jugador al que pertenece el movimiento
 	public Counter getPlayer() {

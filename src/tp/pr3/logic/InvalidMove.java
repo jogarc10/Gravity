@@ -9,7 +9,7 @@ public class InvalidMove extends Exception {
 		super();
 	}
 	
-	public InvalidMove(String msg){
+	public InvalidMove(String msg) {
 		super(msg);
 	}
 	

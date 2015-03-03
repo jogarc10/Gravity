@@ -11,15 +11,22 @@ public class GravityMove extends Move{
 	}
 
 	@Override
-	public boolean executeMove(Board board) {
+	public boolean executeMove(Board board) throws InvalidMove {
 		boolean validMove = false;
 		
-		if (board.getPosition(column, row) == Counter.EMPTY){
-			validMove = true;
-			Resources.applyGravity(board, column, row, currentPlayer);
+		if ((column >= 1 && column <= Resources.DIMX_GRAVITY) && (row >= 1 && row <= Resources.DIMY_GRAVITY)) {
+			if (board.getPosition(column, row) == Counter.EMPTY) {
+				validMove = true;
+				Resources.applyGravity(board, column, row, currentPlayer);
+			}
+			else {
+				throw new InvalidMove("Invalid move: position (" + this.column + "," + this.row + ") is already occupied.");
+			}
+		}
+		else {
+			throw new InvalidMove("Invalid move: position (" + this.column + "," + this.row + ") is not on the board.");
 		}
 		
-
 		return validMove;
 	}
 

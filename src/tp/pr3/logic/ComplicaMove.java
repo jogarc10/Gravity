@@ -13,25 +13,29 @@ public class ComplicaMove extends Move {
 		super(counter, column); 
 	}
 
-	public boolean executeMove(Board board) {
+	public boolean executeMove(Board board) throws InvalidMove {
 		boolean validMove = false;
 		int firstFreeRow = 1;
 		lostMove = Counter.EMPTY;
 
-			if ((column >= 1) && (column <= Resources.DIMX_COMPLICA)) {				
-				firstFreeRow = Resources.freeRowPosition(column, board); // hay que cambiar esto
+		if ((column >= 1) && (column <= Resources.DIMX_COMPLICA)) {				
+			firstFreeRow = Resources.freeRowPosition(column, board); // hay que cambiar esto
 
-				if (firstFreeRow > - 1) {
-					validMove = true;
-					board.setPosition(column, firstFreeRow, currentPlayer);
-				}
-				else if (firstFreeRow == - 1) {
-					validMove = true;
-					lostMove = board.getPosition(column, board.getHeight()); 
-					Resources.moveColumnDown(board, column);
-					board.setPosition(column, 1, currentPlayer);
-				}
+			if (firstFreeRow > - 1) {
+				validMove = true;
+				board.setPosition(column, firstFreeRow, currentPlayer);
 			}
+			else if (firstFreeRow == - 1) {
+				validMove = true;
+				lostMove = board.getPosition(column, board.getHeight()); 
+				Resources.moveColumnDown(board, column);
+				board.setPosition(column, 1, currentPlayer);
+			}
+		}
+		else {
+			throw new InvalidMove("Invalid move: column number " + column + " is not on the board.");
+		}
+		
 		return validMove;
 	}
 

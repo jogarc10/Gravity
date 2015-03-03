@@ -21,7 +21,7 @@ public class Game {
 		reset(rules); // Crea un primer juego del tipo conecta4. 
 	}
 
-	public boolean executeMove(Move mov) {  
+	public boolean executeMove(Move mov) throws InvalidMove {  
 		Counter wonColor;
 		boolean valid = false, draw; 
 		
