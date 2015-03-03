@@ -336,6 +336,7 @@ public class Resources {
 		}
 		board.setPosition(actualColumn, actualRow, counter);
 		
+		
 	}
 	
 	}
