@@ -51,7 +51,6 @@ public class Connect4GameTest {
 	
 	@Test(expected=InvalidMove.class)
 	public void testEjecutaInvalidMove1() throws InvalidMove {
-		System.out.println(p.getTurn());
 		p.executeMove(getMovimiento(1, Counter.BLACK));
 		fail("executeMove() should not accept a move of a counter that does not have the turn.");
 	}

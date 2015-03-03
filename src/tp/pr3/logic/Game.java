@@ -25,9 +25,6 @@ public class Game {
 		Counter wonColor;
 		boolean valid = false, draw; 
 		
-		System.out.println("Current Player: " + mov.getPlayer());
-		System.out.println("Turn: " + turn);
-		
 		if ((mov.getPlayer() == turn) && (!finished)) { // No puede permitir hacer movimientos fuera de turno o se ha terminado el juego
 			
 			winner = Counter.EMPTY;
