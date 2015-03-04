@@ -14,7 +14,7 @@ public class RandomComplicaPlayer implements Player{
 		Random randomNum = new Random();
 		int column;
 		
-		column = randomNum.nextInt(Resources.DIMX_COMPLICA- 1) + 1;
+		column = randomNum.nextInt(Resources.DIMX_COMPLICA);
 				
 		Move randomMove = new ComplicaMove(column, counter);
 		

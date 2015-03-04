@@ -17,8 +17,8 @@ public class RandomGravityPlayer implements Player{
 		boolean valid = false;
 		
 		while (!valid){
-			column = randomNum.nextInt(Resources.DIMX_GRAVITY- 1) + 1;
-			row = randomNum.nextInt(Resources.DIMY_GRAVITY - 1) + 1;
+			column = randomNum.nextInt(Resources.DIMX_GRAVITY);
+			row = randomNum.nextInt(Resources.DIMY_GRAVITY);
 			
 			System.out.println("Column: " + column );
 			System.out.println("Row: " + row );

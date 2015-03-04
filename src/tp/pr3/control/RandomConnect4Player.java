@@ -17,7 +17,7 @@ public class RandomConnect4Player implements Player{
 		Move randomMove = null;
 		
 		while (!valid){
-			column = randomNum.nextInt(Resources.DIMX_CONNECT4 - 1) + 1;
+			column = randomNum.nextInt(Resources.DIMX_CONNECT4);
 			
 			if (!Resources.FullColumnConnect(column, board)){
 				randomMove = new Connect4Move(column, counter);
