@@ -36,4 +36,8 @@ public class Connect4Move extends Move {
 		rowToUndo = Resources.occupiedRowPosition(board, columnToUndo); 
 		board.setPosition(columnToUndo, rowToUndo, Counter.EMPTY); 
 	}
+	
+	public int getColumn() {
+		return this.column;
+	}
 }

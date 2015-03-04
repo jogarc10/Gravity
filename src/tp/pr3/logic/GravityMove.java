@@ -17,7 +17,10 @@ public class GravityMove extends Move{
 		if ((column >= 1 && column <= Resources.DIMX_GRAVITY) && (row >= 1 && row <= Resources.DIMY_GRAVITY)) {
 			if (board.getPosition(column, row) == Counter.EMPTY) {
 				validMove = true;
-				Resources.applyGravity(board, column, row, super.getPlayer());
+				GravityMove realMove = Resources.applyGravity(board, column, row, super.getPlayer());
+				board.setPosition(realMove.getColumn(), realMove.getRow(), realMove.getPlayer());
+				row = realMove.getRow();
+				column = realMove.getColumn();
 			}
 			else {
 				throw new InvalidMove("Invalid move: position (" + this.column + "," + this.row + ") is already occupied.");
@@ -37,5 +40,12 @@ public class GravityMove extends Move{
 		rowToUndo = row;
 		board.setPosition(columnToUndo, rowToUndo, Counter.EMPTY); 
 	}
-
+	
+	public int getColumn() {
+		return this.column;
+	}
+	
+	public int getRow() {
+		return this.row;
+	}
 }

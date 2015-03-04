@@ -19,4 +19,7 @@ public abstract class Move {
 	
 	//undo(Tablero tab) deshace el ultimo movimiento del tablero recibido como parametro
 	public abstract void undo(Board board);
+	
+	public abstract int getColumn();
+	
 }

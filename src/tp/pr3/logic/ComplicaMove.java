@@ -53,5 +53,10 @@ public class ComplicaMove extends Move {
 			board.setPosition(column, board.getHeight(), lostMove);
 		}	
 	}
+
+	@Override
+	public int getColumn() {
+		return this.column;
+	}
 	
 }

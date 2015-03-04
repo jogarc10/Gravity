@@ -5,6 +5,7 @@ import java.util.Scanner;
 import tp.pr3.logic.Board;
 import tp.pr3.logic.Counter;
 import tp.pr3.logic.Game; 
+import tp.pr3.logic.GravityMove;
 
 public class Resources {
 	public static final int MAX_STACK = 100;
@@ -206,7 +207,7 @@ public class Resources {
 		DIMY_GRAVITY = y;
 	}
 	
-	public static void applyGravity(Board board, int column, int row, Counter counter){
+	public static GravityMove applyGravity(Board board, int column, int row, Counter counter){
 		int distRight, distLeft, distUp, distBottom;
 		distLeft = column-1;
 		distRight = DIMX_GRAVITY - column;
@@ -214,102 +215,58 @@ public class Resources {
 		distBottom = DIMY_GRAVITY - row;
 		double minDIM = 0;
 		int minDimInt = 0;
+		GravityMove movement = null;
 		
 		minDIM = Math.min(DIMX_GRAVITY, DIMY_GRAVITY);
 		minDimInt = (int) Math.ceil(minDIM/2);
 		
 		if((distLeft == distRight) && (distUp == distBottom)){
-			displaceCounter(board, column, row, 0, 0, counter);
+			movement = displaceCounter(board, column, row, 0, 0, counter);
 		}
 		else if (distLeft == distRight){
 			if (distUp < distBottom){
-				displaceCounter(board, column, row, 0, -1, counter);
+				movement = displaceCounter(board, column, row, 0, -1, counter);
 			}
 			else if (distBottom < distUp){
-				displaceCounter(board, column, row, 0, +1, counter);
+				movement = displaceCounter(board, column, row, 0, +1, counter);
 			}
 		}
 		else if (distUp == distBottom){
 			if (distLeft < distRight){
-				displaceCounter(board, column, row, -1, 0, counter);
+				movement = displaceCounter(board, column, row, -1, 0, counter);
 			}
 			else if (distLeft > distRight){
-				displaceCounter(board, column, row, +1, 0, counter);
+				movement = displaceCounter(board, column, row, +1, 0, counter);
 			}
 		}
 		else if ((distUp == distRight) && (distUp < minDimInt)){
-			displaceCounter(board, column, row, +1, -1, counter);
+			movement = displaceCounter(board, column, row, +1, -1, counter);
 		}
 		else if ((distUp == distLeft) && (distUp < minDimInt)){
-			displaceCounter(board, column, row, -1, -1, counter);	
+			movement = displaceCounter(board, column, row, -1, -1, counter);	
 		}
 		else if ((distBottom == distRight) && (distBottom < minDimInt)){
-			displaceCounter(board, column, row, +1, +1, counter);
+			movement = displaceCounter(board, column, row, +1, +1, counter);
 		}
 		else if ((distBottom == distLeft) && (distBottom < minDimInt)){
-			displaceCounter(board, column, row, -1, +1, counter);
+			movement = displaceCounter(board, column, row, -1, +1, counter);
 		}
 		else if ((distUp < distRight) && (distUp < distLeft) && (distUp < distBottom)){
-			displaceCounter(board, column, row, 0, -1, counter);
+			movement = displaceCounter(board, column, row, 0, -1, counter);
 		}
 		else if ((distRight < distUp) && (distRight < distLeft) && (distRight < distBottom)){
-			displaceCounter(board, column, row, +1, 0, counter);	
+			movement = displaceCounter(board, column, row, +1, 0, counter);	
 		}
 		else if ((distLeft < distRight) && (distLeft < distUp) && (distLeft < distBottom)){
-			displaceCounter(board, column, row, -1, 0, counter);
+			movement = displaceCounter(board, column, row, -1, 0, counter);
 		}
 		else if ((distBottom < distRight) && (distBottom < distLeft) && (distBottom < distUp)){
-			displaceCounter(board, column, row, 0, +1, counter);
+			movement = displaceCounter(board, column, row, 0, +1, counter);
 		}
-		
-		
-//		if (lowerAll == distLeft){
-//			if (distLeft == distUp){
-//				displaceCounter(board, column, row, -1, 1, counter);
-//			}
-//			else if(distLeft == distBottom){
-//				displaceCounter(board, column, row, -1, -1, counter);
-//			}
-//			else{
-//				displaceCounter(board, column, row, -1, 0, counter);
-//			}
-//		}
-//		else if (lowerAll == distRight){
-//			if (distRight == distUp){
-//				displaceCounter(board, column, row, 1, 1, counter);
-//			}
-//			else if(distRight == distBottom){
-//				displaceCounter(board, column, row, 1, -1, counter);
-//			}
-//			else{
-//				displaceCounter(board, column, row, 1, 0, counter);
-//			}
-//		}
-//		else if (lowerAll == distUp){
-//			if (distRight == distUp){
-//				displaceCounter(board, column, row, 1, 1, counter);
-//			}
-//			else if(distLeft == distUp){
-//				displaceCounter(board, column, row, -1, 1, counter);
-//			}
-//			else{
-//				displaceCounter(board, column, row, 0, 1, counter);
-//			}
-//		}
-//		else if (lowerAll == distBottom){
-//			if (distRight == distUp){
-//				displaceCounter(board, column, row, 1, -1, counter);
-//			}
-//			else if(distLeft == distUp){
-//				displaceCounter(board, column, row, -1, -1, counter);
-//			}
-//			else{
-//				displaceCounter(board, column, row, 0, -1, counter);
-//			}
-//		}
+		return movement;
 	}
 	
-	public static void displaceCounter(Board board, int posCol, int posRow, int movCol, int movRow, Counter counter){
+	public static GravityMove displaceCounter(Board board, int posCol, int posRow, int movCol, int movRow, Counter counter){
 		boolean ocuppy = false;
 		int actualRow, actualColumn;
 		actualRow = posRow;
@@ -334,10 +291,8 @@ public class Resources {
 				ocuppy = true;
 			}
 		}
-		board.setPosition(actualColumn, actualRow, counter);
-		
-		
-	}
+		return new GravityMove(actualColumn, actualRow, counter);	
+		}
 	
 	}
 	
