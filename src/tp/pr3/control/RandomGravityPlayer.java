@@ -14,14 +14,14 @@ public class RandomGravityPlayer implements Player{
 		boolean valid = false;
 		int column = 0, row = 0;
 		
-		while (!valid) { 
+		do { 
 			row    = (int) ((Math.random() * Resources.DIMY_GRAVITY) + 1);
 			column = (int) ((Math.random() * Resources.DIMX_GRAVITY) + 1);
 			 
 			if (board.getPosition(column, row) == Counter.EMPTY) {
 				valid = true;
 			}
-		} 
+		}  while(!valid);
 		
 		return new GravityMove(column, row, counter);
 	}

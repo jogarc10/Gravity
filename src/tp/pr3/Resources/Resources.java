@@ -42,8 +42,7 @@ public class Resources {
 		boolean occupied = false;
 		
 		while (!occupied && y <= height) {
-			if (board.getPosition(col, y) != Counter.EMPTY) 
-			{
+			if (board.getPosition(col, y) != Counter.EMPTY) {
 				occupied = true;
 				row = y;
 			}
