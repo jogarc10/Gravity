@@ -189,11 +189,18 @@ public class Resources {
 		}
 	}
 	
-	public static boolean FullColumnConnect(int column, Board board){
+	// He tenido que escribir de nuevo la función de pedro para 
+	// que funcione el conecta 4.
+	
+	public static boolean fullColumn(int column, Board b) {
+		int row = b.getHeight();
 		boolean isFull = true;
 		
-		if (board.getPosition(column, board.getHeight()) == Counter.EMPTY){
-			isFull = false;
+		while ((isFull) && (row >= 1)) {
+			if (b.getPosition(column, row) == Counter.EMPTY) {
+				isFull = false;
+			}
+			row--;
 		}
 		
 		return isFull;
