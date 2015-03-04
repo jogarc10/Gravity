@@ -4,12 +4,11 @@ import tp.pr3.Resources.Resources;
 
 
 public class ComplicaMove extends Move {
-//	Elultimo movimiento perdido
-	protected Counter lostMove; 
+	protected Counter lostMove; //	Last lost movement 
+		
+	// Constructor for a single Movement on Complica
 	
-	//constructor MovimientoComplica(int donde, Ficha color)
-	public ComplicaMove(int column, Counter counter)
-	{
+	public ComplicaMove(int column, Counter counter) {
 		super(counter, column); 
 	}
 
