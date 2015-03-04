@@ -5,7 +5,7 @@ import java.lang.Throwable;
 
 public class InvalidMove extends Exception {
 
-	public InvalidMove(){
+	public InvalidMove() {
 		super();
 	}
 	
@@ -13,7 +13,7 @@ public class InvalidMove extends Exception {
 		super(msg);
 	}
 	
-	public InvalidMove(String msg, Throwable cause){
+	public InvalidMove(String msg, Throwable cause) {
 		super(msg, cause);
 	}
 	

@@ -20,11 +20,14 @@ public class RandomGravityPlayer implements Player{
 			column = randomNum.nextInt(Resources.DIMX_GRAVITY);
 			row = randomNum.nextInt(Resources.DIMY_GRAVITY);
 			
-			if (board.getPosition(column, row) == Counter.EMPTY){
-				valid = true;
-				
+			System.out.println("Column: " + column );
+			System.out.println("Row: " + row );
+			
+			if ((column >= 1) && (row >= 1) && (board.getPosition(column, row) == Counter.EMPTY)) {
+					valid = true;
 			}
 		}
+		
 		Move randomMove = new GravityMove(column, row, counter);
 		
 		return randomMove;

@@ -30,8 +30,8 @@ public class Board {
 		return width;
 	}
 	
-	// Añado getWidth para no tener que tocar los algoritmos que comprueban las diagonales.
-	// Como no sé si has usado getLength, pues he dejado los dos.
+	// Aï¿½ado getWidth para no tener que tocar los algoritmos que comprueban las diagonales.
+	// Como no sï¿½ si has usado getLength, pues he dejado los dos.
 	
 	public int getWidth(){
 		return width;
@@ -42,7 +42,7 @@ public class Board {
 //	}
 	public Counter getPosition(int x, int y) {
 		Counter color = Counter.EMPTY;
-		if ((x >= 1 && x <= width) || (y >= 1 && y <= height)) {
+		if ((x >= 1 && x <= width) && (y >= 1 && y <= height)) {
 			color = board[y - 1][x - 1];
 		}
 		return color;		
