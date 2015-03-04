@@ -11,26 +11,19 @@ import tp.pr3.logic.Move;
 public class RandomGravityPlayer implements Player{
 
 	public Move getMove(Board board, Counter counter) {
-		Random randomNum = new Random();
-		int column = 0;
-		int row = 0;
+		int column = 0, row = 0;
 		boolean valid = false;
 		
-		while (!valid){
-			column = randomNum.nextInt(Resources.DIMX_GRAVITY);
-			row = randomNum.nextInt(Resources.DIMY_GRAVITY);
-			
-			System.out.println("Column: " + column );
-			System.out.println("Row: " + row );
-			
-			if ((column >= 1) && (row >= 1) && (board.getPosition(column, row) == Counter.EMPTY)) {
-					valid = true;
+		while (!valid) { 
+			row = (int) ((Math.random() * Resources.DIMY_GRAVITY) + 1);
+			column = (int) ((Math.random() * Resources.DIMX_GRAVITY) + 1);
+			 
+			if (board.getPosition(column, row) == Counter.EMPTY) {
+				valid = true;
 			}
-		}
+		} 
 		
-		Move randomMove = new GravityMove(column, row, counter);
-		
-		return randomMove;
+		return new GravityMove(column, row, counter);
 	}
 
 }
