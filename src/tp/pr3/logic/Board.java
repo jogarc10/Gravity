@@ -3,43 +3,36 @@ package tp.pr3.logic;
 import tp.pr3.logic.Counter;
 
 public class Board {
-
 	private int height;
 	private int width;
 	private Counter [][] board;
 	private boolean full;
 	
-	public Board(int tx, int ty){
+	public Board(int tx, int ty) {  // Constructor for the Board
+		
 		width = tx; // Row
 		height = ty;  // column
-		if ((tx < 1) || (ty < 1))
-		{
+		
+		if ((tx < 1) || (ty < 1)) {
 			width = 1;
 			height = 1;
 		} 
 		
 		board = new Counter[height][width];
-		emptyCells();
+		emptyCells(); // restart the board
 	}
+
+	// Getters and setters for private attributes
 	
-	public int getHeight(){
+	public int getWidth() {
+		return width;
+	}
+	public int getLength() {
+		return width;
+	}
+	public int getHeight() {
 		return height;
-	}
-
-	public int getLength(){
-		return width;
-	}
-	
-	// A�ado getWidth para no tener que tocar los algoritmos que comprueban las diagonales.
-	// Como no s� si has usado getLength, pues he dejado los dos.
-	
-	public int getWidth(){
-		return width;
-	}
-
-//	public Counter getPosition(int tx, int ty){
-//		return board[ty - 1][tx - 1];
-//	}
+	} 
 	public Counter getPosition(int x, int y) {
 		Counter color = Counter.EMPTY;
 		if ((x >= 1 && x <= width) && (y >= 1 && y <= height)) {
@@ -48,21 +41,27 @@ public class Board {
 		return color;		
 	}
 	
-	public void setPosition(int tx, int ty, Counter counter){
-		if ((tx >= 1 && tx <= width) || (ty >= 1 && ty <= height)) {
-			board[ty - 1][tx - 1] = counter;
+	// Setters for private attributes
+
+	public void setFull(Boolean full) {
+		this.full = full; // indicates if a board is full or not.
+	}
+	 
+	public void emptyCells() {
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				board[y][x] = Counter.EMPTY; // Reset the board with empty Cells
+			}
 		}
 	}
 	
-	public void setFull(Boolean full) {
-		this.full = full;
-	}
+	// Methods for checking if a board neither column is full or not.
 	
 	public boolean isFull() {
-		int y = 1;
-		int x;
+		int x, y = 1;
 		boolean fullB = true;
-		while((y <= height) && (fullB)) {
+		
+		while ((y <= height) && (fullB)) {
 			x = 1;
 			while(x <= width && (fullB)) {
 				if (getPosition(x, y) == Counter.EMPTY) {
@@ -89,13 +88,7 @@ public class Board {
 		return fullColumn;
 	}
 	
-	public void emptyCells() {
-		for (int y = 0; y < height; y++) {
-			for (int x = 0; x < width; x++) {
-				board[y][x] = Counter.EMPTY;
-			}
-		}
-	}
+	// Printer for the Board
 	
 	public void printBoard() {
 		String line = "";
@@ -132,26 +125,20 @@ public class Board {
 		System.out.println("");
 	}
 		
-
-
-	public String tabLines(int y)
-	{
+	public String tabLines(int y) {
 		String line = "";
 		
 		line += "|"; 
 		
 		for (int x = 1; x <= width; x++) 
 		{	
-			if (getPosition(x, y) == Counter.EMPTY) 
-			{
+			if (getPosition(x, y) == Counter.EMPTY)  {
 				line += " ";
 			}
-			else if (getPosition(x, y) == Counter.BLACK)
-			{
+			else if (getPosition(x, y) == Counter.BLACK) {
 				line +=  "X";
 			}
-			else if (getPosition(x, y) == Counter.WHITE)
-			{
+			else if (getPosition(x, y) == Counter.WHITE) {
 				line += "O";
 			}			 
 		}
@@ -161,5 +148,10 @@ public class Board {
 	}
 	
 	
+	public void setPosition(int tx, int ty, Counter counter){
+		if ((tx >= 1 && tx <= width) || (ty >= 1 && ty <= height)) {
+			board[ty - 1][tx - 1] = counter;
+		}
+	}
 	
 }
