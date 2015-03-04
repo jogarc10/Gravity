@@ -103,10 +103,10 @@ public class GravityGameTest {
 		reset();
 		Board t = p.getBoard();
 		
-		p.executeMove(getMovimiento(3, 2, Counter.WHITE));
+		p.executeMove(getMovimiento(3, 2, Counter.WHITE));		
 		assertEquals("After placing in position (3, 2), position (3, 1) should be occupied by WHITE",
 				Counter.WHITE, t.getPosition(3,  1));
-				
+		
 		try
 		{
 			p.executeMove(getMovimiento(3, 1, Counter.BLACK)); 		

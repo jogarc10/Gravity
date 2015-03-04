@@ -58,7 +58,6 @@ public class Connect4FactoryTest {
 			int k=0;
 			while (!p.isFinished()) {
 				Move m = js[k].getMove(t, p.getTurn());
-				System.out.println("Random: "+ m.getPlayer());;
 				p.executeMove(m);
 				k = (k + 1) % 2;
 			}
