@@ -11,19 +11,19 @@ import java.util.Random;
 public class RandomConnect4Player implements Player{
 
 	public Move getMove(Board board, Counter counter) {
-		Random randomNum = new Random();
 		int column;
 		boolean valid = false;
 		Move randomMove = null;
 		
-		while (!valid){
-			column = randomNum.nextInt(Resources.DIMX_CONNECT4 - 1) + 1;
+		do {
+			column = (int) ((Math.random() * Resources.DIMX_CONNECT4) + 1); // Generates Random Number
 			
 			if (!Resources.fullColumn(column, board)){
-				randomMove = new Connect4Move(column, counter);
 				valid = true;
+				randomMove = new Connect4Move(column, counter);
 			}
-		}
+		} while (!valid);
+		
 		return randomMove;
 	}
 

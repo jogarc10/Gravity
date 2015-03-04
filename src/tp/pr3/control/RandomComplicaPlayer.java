@@ -11,14 +11,7 @@ import java.util.Random;
 public class RandomComplicaPlayer implements Player{
 
 	public Move getMove(Board board, Counter counter) {
-		int column;
-		//Random randomNum = new Random();
-		
-		// column = randomNum.nextInt(Resources.DIMX_COMPLICA);
-		column = (int) ((Math.random() * Resources.DIMX_COMPLICA) + 1);
-				
-		// Move randomMove 
-		
+		int column = (int) ((Math.random() * Resources.DIMX_COMPLICA) + 1);
 		return new ComplicaMove(column, counter);
 	}
 
