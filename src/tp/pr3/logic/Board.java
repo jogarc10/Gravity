@@ -93,6 +93,7 @@ public class Board {
 	public void printBoard() {
 		String line = "";
 		
+		
 		for (int y = 1; y <= height; y++) {
 			line = tabLines(y);	
 			System.out.println(line);

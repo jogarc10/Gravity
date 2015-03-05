@@ -26,9 +26,6 @@ public class ComplicaRules implements GameRules {
 		winner = Counter.EMPTY; // No ha ganado nadie
 		blackCounter = 0;
 		whiteCounter = 0;
-		 
-		// LastMove?? Puede ser para actualizar el tablero con ese movimiento?
-		//Ni idea tio
 		
 		checkHorizontal(b);
 		
@@ -41,6 +38,7 @@ public class ComplicaRules implements GameRules {
 				}
 			}
 		}
+		complicaFinished();//actualiza despues de la ultima diagonal
 			
 		return this.winner; // El color del ganador lo actualizan las funciones: checkhorizontal, etc... Actualizan el atributo winner
 							// Devuelve Empty si no ha ganado nadie
@@ -254,7 +252,6 @@ public class ComplicaRules implements GameRules {
 	}
 	
 	public void checkDiagonal2(Board board) {
-		boolean isWinner = false;
 		int y, x, tilesCounter, aux_X, aux_Y, numIterations;
 		Counter color, nextColor;
 		
@@ -317,7 +314,7 @@ public class ComplicaRules implements GameRules {
 					numIterations = Resources.DIMX_COMPLICA;
 				}
 				
-				while ((x < numIterations) && !(isWinner)) {//<=
+				while ((x < numIterations)) {// && !(isWinner)
 					color = board.getPosition(x, aux_Y);
 					nextColor = board.getPosition(x + 1, aux_Y + 1);
 					
