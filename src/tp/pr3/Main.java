@@ -106,6 +106,10 @@ public class Main {
 							System.err.println("For more details, use -h|--help.");
 						}
 					}
+					else if(words[1].equals("C4") || words[1].equals("CO")){
+						System.err.println("Incorrect use: illegal arguments: " + words[2] + " " + words[3] + " " + words[4] + " " + words[5]);
+						System.err.println("For more details, use -h|--help.");
+					}
 					else{
 						System.err.println("Incorrect use: game ’" + words[1].toLowerCase() + "’ incorrect.");
 						System.err.println("For more details, use -h|--help.");
