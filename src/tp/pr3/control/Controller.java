@@ -51,9 +51,8 @@ public class Controller {
 	}
 	
 	public void run() {
-		String auxStr;
 		Move move = null;
-		int option, col, row;
+		int option;
 		boolean exit = false, valid, undo;
 		
 		do {

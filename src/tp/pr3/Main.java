@@ -24,14 +24,15 @@ public class Main {
 		GameRules gameRules = new Connect4Rules();
 		GameTypeFactory f = new Connect4Factory();
 		
-		boolean valid = false;
+		boolean valid = false, help = false;
+		
 			if (args.length == 0){
 				valid = true;
 			}
 			else if (args.length == 1) {
 				if (args[0].equals("-h") || args[0].equals("--help")){
 					Resources.helpInit();
-					valid = true;
+					help = true;
 				}
 				else{
 					System.err.println("Incorrect use: Unrecognized option: " + args[0]);
@@ -43,6 +44,7 @@ public class Main {
 					if (args[1].equals("c4")){
 						gameRules = new Connect4Rules();
 						f = new Connect4Factory();
+						valid = true;
 					}
 					else if (args[1].equals("co")){
 						gameRules = new ComplicaRules();
@@ -117,19 +119,22 @@ public class Main {
 				System.err.println("Incorrect use: Unrecognized option: " + args[0].toLowerCase());
 				System.err.println("For more details, use -h|--help.");
 			}
-		
-		if(valid){
-			game = new Game(gameRules);
 			
-			controller = new Controller(f, game, in);
-			controller.run();
+			if(valid){
+				game = new Game(gameRules);
+				
+				controller = new Controller(f, game, in);
+				controller.run();
+				System.exit(0);
+			}
+			else if (help){
+				System.exit(0);
+			}
+			else{
+				System.exit(1);
+			}
+		}
 			
-			System.exit(0);
-		}
-		else{
-			System.exit(1);
-		}
 		
-		}
-		
-	}	
+	}
+

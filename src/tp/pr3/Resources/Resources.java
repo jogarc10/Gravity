@@ -145,8 +145,18 @@ public class Resources {
 						try {
 							   Integer.parseInt(words[2]);
 							   Integer.parseInt(words[3]);
-							   setGravityDimX(Integer.parseInt(words[2]));
-							   setGravityDimY(Integer.parseInt(words[3]));
+							   if (Integer.parseInt(words[2]) < 1){
+								   setGravityDimX(1);
+							   }
+							   else{
+								   setGravityDimX(Integer.parseInt(words[2]));
+							   }
+							   if (Integer.parseInt(words[3]) < 1){
+								   setGravityDimY(1);
+							   }
+							   else{
+								   setGravityDimY(Integer.parseInt(words[3]));
+							   }
 							   option = 6;
 							} catch (NumberFormatException e) {
 								System.err.println(lowerCaseStr + ": command not understood, please try again");
