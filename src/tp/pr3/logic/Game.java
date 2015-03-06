@@ -84,6 +84,9 @@ public class Game {
 			previousMove.undo(board); 
 			turn = previousMove.getPlayer(); // Bug fixed!!! Actualizar el color del jugador!
 		}
+		else {
+			System.err.println("Nothing to undo.");
+		}
 		
 		return success;
 	}
