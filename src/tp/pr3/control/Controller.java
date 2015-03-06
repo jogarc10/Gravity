@@ -82,6 +82,7 @@ public class Controller {
 				// Undo 
 				undo = false;
 				undo = game.undo();
+				changePlayer(); // Change Current player
 				
 				if (!undo) { 
 					System.out.println("Nothing to undo, please try again");
