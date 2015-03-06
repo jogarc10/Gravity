@@ -97,6 +97,7 @@ public class Controller {
 			case 3:
 				// Exit
 				exit = true;
+				System.out.println("Exit requested.");
 				break;
 
 			case 4://c4

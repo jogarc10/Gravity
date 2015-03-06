@@ -28,20 +28,12 @@ public class ComplicaRules implements GameRules {
 		whiteCounter = 0;
 		
 		checkHorizontal(b);
-		
-		if (!complicaFinished()) {
-			checkVertical(b);
-			if (!complicaFinished()) {
-				checkDiagonal1(b);
-				if (!complicaFinished()) {
-					checkDiagonal2(b);
-				}
-			}
-		}
+		checkVertical(b);
+		checkDiagonal1(b);		
+		checkDiagonal2(b);
 		complicaFinished();//actualiza despues de la ultima diagonal
 			
-		return this.winner; // El color del ganador lo actualizan las funciones: checkhorizontal, etc... Actualizan el atributo winner
-							// Devuelve Empty si no ha ganado nadie
+		return this.winner; 
 	}
 	
 	public Counter nextTurn(Counter lastMove, Board b) {

@@ -66,6 +66,14 @@ public class Main {
 					System.err.println("For more details, use -h|--help.");
 				}
 			}
+			else if (args.length == 5) {
+				if (args[0].equals("-g") || args[0].equals("--game")){
+					if(args[1].equals("c4") || args[1].equals("co")){
+						System.err.println("Incorrect use: illegal arguments: " + args[2] + " " + args[3] + " " + args[4]);
+						System.err.println("For more details, use -h|--help.");
+					}
+				}
+			}
 			else if (args.length == 6){
 				if (args[0].equals("-g") || args[0].equals("--game")){
 					if (args[1].equals("gr")){
