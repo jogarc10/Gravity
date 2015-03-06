@@ -29,7 +29,7 @@ public class Controller {
 		this.game = g;
 		this.in = in;
 		this.players = new Player[2]; // Create players array
-		this.gameType = new Connect4Factory();
+		this.gameType = f;
 		initGame(); // initialize the rest of atributes
 	}
 
@@ -119,15 +119,7 @@ public class Controller {
 
 				break;
 			case 7:
-				System.out.println("The available commands are:");
-				System.out.println("");
-				System.out.println("MAKE A MOVE: place a counter on the board.");
-				System.out.println("UNDO: undo the last move of the game.");
-				System.out.println("RESTART: restart the game.");
-				System.out.println("PLAY [c4|co|gr] [dimX dimY]: change the type of game.");
-				System.out.println("PLAYER [white|black] [human|random]: change the type of player.");
-				System.out.println("EXIT: exit the application.");
-				System.out.println("HELP: show this help.");
+				Resources.help();
 				break;
 			case 8:
 				// WHITE HUMAN

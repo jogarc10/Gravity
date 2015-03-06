@@ -14,7 +14,7 @@ public class Resources {
 	public static final int DIMX_COMPLICA = 4, DIMY_COMPLICA = 7;
 
 	
-	public static int DIMX_GRAVITY = 9, DIMY_GRAVITY = 10; // Is not final
+	public static int DIMX_GRAVITY = 10, DIMY_GRAVITY = 10; // Is not final
 
 	public static int freeRowPosition(int col, Board board) {
 		int row = -1;
@@ -298,8 +298,28 @@ public class Resources {
 			}
 		}
 		return new GravityMove(actualColumn, actualRow, counter);	
-		}
-	
 	}
+	
+	public static void help(){
+		System.out.println("The available commands are:");
+		System.out.println("");
+		System.out.println("MAKE A MOVE: place a counter on the board.");
+		System.out.println("UNDO: undo the last move of the game.");
+		System.out.println("RESTART: restart the game.");
+		System.out.println("PLAY [c4|co|gr] [dimX dimY]: change the type of game.");
+		System.out.println("PLAYER [white|black] [human|random]: change the type of player.");
+		System.out.println("EXIT: exit the application.");
+		System.out.println("HELP: show this help.");
+	}
+	
+	public static void helpInit(){
+		System.out.println("Usage: tp.pr3.Main [-g <game>] [-h] [-x <numColumns>] [-y <numRows>]");
+		System.out.println("-g,--game <game> Type of game (c4, co, gr). By default, c4.");
+		System.out.println("-h,--help Displays this help.");
+		System.out.println("-x,--dimX <numColumns> Number of columns on the board (Gravity only).By defaul, 10.");
+		System.out.println("-y,--dimY <numRows> Number of rows on the board (Gravity only).By default, 10.");
+	}
+		
+}
 	
 
