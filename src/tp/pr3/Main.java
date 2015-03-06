@@ -24,13 +24,16 @@ public class Main {
 		GameRules gameRules = new Connect4Rules();
 		GameTypeFactory f = new Connect4Factory();
 		
+		int exit = 1;
+		
 			
 			if (args.length == 1) {
 				if (args[0].equals("-h") || args[0].equals("--help")){
 					Resources.helpInit();
+					exit = 0;
 				}
 				else{
-					System.err.println("Incorrect use: Unrecognized option: " + args);
+					System.err.println("Incorrect use: Unrecognized option: " + args[0]);
 					System.err.println("For more details, use -h|--help.");
 				}
 			}
@@ -39,14 +42,17 @@ public class Main {
 					if (args[1].equals("c4")){
 						gameRules = new Connect4Rules();
 						f = new Connect4Factory();
+						exit = 0;
 					}
 					else if (args[1].equals("co")){
 						gameRules = new ComplicaRules();
 						f = new ComplicaFactory();
+						exit = 0;
 					}
 					else if (args[1].equals("gr")){
 						gameRules = new GravityRules(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
 						f = new GravityFactory(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
+						exit = 0;
 					}
 					else {
 						System.err.println("Incorrect use: game ’" + args[1].toLowerCase() + "’ incorrect.");
@@ -71,6 +77,7 @@ public class Main {
 										   Resources.setGravityDimY(Integer.parseInt(args[5]));
 										   gameRules = new GravityRules(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
 										   f = new GravityFactory(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
+										   exit = 0;
 										   
 									   }
 									   catch(NumberFormatException e){
@@ -117,7 +124,8 @@ public class Main {
 		controller = new Controller(f, game, in);
 		controller.run();
 		
-		System.exit(0);
+		System.exit(exit);
+		
+		}
 		
 	}	
-}
