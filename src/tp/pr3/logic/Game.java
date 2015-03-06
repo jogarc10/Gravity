@@ -113,4 +113,8 @@ public class Game {
 		return this.turn;
 	}
 	
+	public GameRules getRules(){
+		return rules;
+	}
+	
 }

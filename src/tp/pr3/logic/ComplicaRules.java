@@ -351,4 +351,8 @@ boolean complicaFinished(){
 	}	
 	return isWinner;
 }
+
+public int intRules() {
+	return 1;
+}
 }

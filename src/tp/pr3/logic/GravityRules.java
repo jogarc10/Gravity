@@ -355,4 +355,8 @@ public class GravityRules implements GameRules{
 		return isFormed;
 	}
 	
+	public int intRules() {
+		return 2;
+	}
+	
 }

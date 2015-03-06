@@ -82,9 +82,9 @@ public class Controller {
 				// Undo 
 				undo = false;
 				undo = game.undo();
-				changePlayer(); // Change Current player
-				
-				if (!undo) { 
+				if (undo){
+					changePlayer(); // Change Current player
+				}else{ 
 					System.out.println("Nothing to undo, please try again");
 				}
 
@@ -92,31 +92,34 @@ public class Controller {
 			case 2:
 				// Restart 
 				initGame(); // restart the game
-				System.out.println("Game restarted");
+				System.out.println("Game restarted.");
 				break;
 				
 			case 3:
 				// Exit
 				exit = true;
-				System.out.println("Exit requested.");
+				System.out.println("Exit requested. ");
 				break;
 
 			case 4://c4
 				
 				gameType = new Connect4Factory();
 				initGame();
+				System.out.println("Game restarted.");
 				 
 				break;
 			case 5://co
 				
 				gameType = new ComplicaFactory();
 				initGame();
+				System.out.println("Game restarted.");
 				
 				break;
 			case 6: //gr
 				
 				gameType = new GravityFactory(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY); 
 				initGame();
+				System.out.println("Game restarted.");
 
 				break;
 			case 7:
@@ -166,7 +169,7 @@ public class Controller {
 			}  
 		} while(!exit);	
 		
-		System.out.println("Closing the game... ");
+		System.out.println("Closing the game...  ");
 		 
 	}	
 

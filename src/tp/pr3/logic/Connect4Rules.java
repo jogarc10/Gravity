@@ -358,6 +358,10 @@ public class Connect4Rules implements GameRules {
 		return isFormed;
 	}	
 	
+	public int intRules() {
+		return 0;
+	}
+	
 }
 
 
