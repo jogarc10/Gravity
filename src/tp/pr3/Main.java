@@ -24,13 +24,14 @@ public class Main {
 		GameRules gameRules = new Connect4Rules();
 		GameTypeFactory f = new Connect4Factory();
 		
-		int exit = 1;
-		
-			
-			if (args.length == 1) {
+		boolean valid = false;
+			if (args.length == 0){
+				valid = true;
+			}
+			else if (args.length == 1) {
 				if (args[0].equals("-h") || args[0].equals("--help")){
 					Resources.helpInit();
-					exit = 0;
+					valid = true;
 				}
 				else{
 					System.err.println("Incorrect use: Unrecognized option: " + args[0]);
@@ -42,17 +43,16 @@ public class Main {
 					if (args[1].equals("c4")){
 						gameRules = new Connect4Rules();
 						f = new Connect4Factory();
-						exit = 0;
 					}
 					else if (args[1].equals("co")){
 						gameRules = new ComplicaRules();
 						f = new ComplicaFactory();
-						exit = 0;
+						valid = true;
 					}
 					else if (args[1].equals("gr")){
 						gameRules = new GravityRules(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
 						f = new GravityFactory(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
-						exit = 0;
+						valid = true;
 					}
 					else {
 						System.err.println("Incorrect use: game ’" + args[1].toLowerCase() + "’ incorrect.");
@@ -77,8 +77,7 @@ public class Main {
 										   Resources.setGravityDimY(Integer.parseInt(args[5]));
 										   gameRules = new GravityRules(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
 										   f = new GravityFactory(Resources.DIMX_GRAVITY, Resources.DIMY_GRAVITY);
-										   exit = 0;
-										   
+										   valid = true;
 									   }
 									   catch(NumberFormatException e){
 										   System.err.println("Incorrect use: illegal arguments: " + args[2] + " " + args[3] + " " + args[4] + " " + args[5]);
@@ -119,12 +118,17 @@ public class Main {
 				System.err.println("For more details, use -h|--help.");
 			}
 		
-		game = new Game(gameRules);
-		
-		controller = new Controller(f, game, in);
-		controller.run();
-		
-		System.exit(exit);
+		if(valid){
+			game = new Game(gameRules);
+			
+			controller = new Controller(f, game, in);
+			controller.run();
+			
+			System.exit(0);
+		}
+		else{
+			System.exit(1);
+		}
 		
 		}
 		
